@@ -1,7 +1,0 @@
-Hercules Starter Pack
-
-Testing how it works
-	1) Main
-	2) Branching
-	3) Commit
-	4) Pull Request
