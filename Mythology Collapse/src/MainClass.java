@@ -1,6 +1,6 @@
 public class MainClass {
 	public static void main(String[] args) {
-		System.out.println("επέλεξε έναν από τους παρακάτω ήρωες");
-		System.out.println("1. Περσέας 2.Ηρακλής 3.Ιάσωνας ");
+		System.out.println("ΞµΟ€Ξ­Ξ»ΞµΞΎΞµ Ξ­Ξ½Ξ±Ξ½ Ξ±Ο€Ο Ο„ΞΏΟ…Ο‚ Ο€Ξ±ΟΞ±ΞΊΞ¬Ο„Ο‰ Ξ®ΟΟ‰ΞµΟ‚");
+		System.out.println("1. Ξ ΞµΟΟƒΞ­Ξ±Ο‚ 2.Ξ—ΟΞ±ΞΊΞ»Ξ®Ο‚ 3.Ξ™Ξ¬ΟƒΟ‰Ξ½Ξ±Ο‚  ");
 	}
 }
