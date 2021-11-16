@@ -46,11 +46,10 @@ public class Hercules {
 				System.out.println("1)Η Ήρα έστειλα φίδια για να σκοτώσουν τον Ηρακλή.\n"
 								 + "2)Η Ήρα πήγε η Ίδια να σκοτώσει τον Ηρακλή.");
 				answer += in.next();
-			} else {
+			} else if (answer.equals ("2")){
 				System.out.println("Ο Ηρακλής δεν έμαθε ποτέ για τις πραγματικές του δυνάμεις");
 				answer += "2";
-			}
-				
+			}		
 		break;
 		case "2":
 			System.out.println("Δεν ζήλευε, οπότε ο Ηρακλής δεν έμαθε ποτέ τις πραγματικές του δυνάμεις.");
