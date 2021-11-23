@@ -7,7 +7,7 @@ public class Hercules {
  * Μετά την πρώτη κατηγορία θα υπάρχουν υποκατηγορίες
  * a->a1->ak->ak0->ak9...
  */
-	public static void main(String []args) {
+	public Hercules() {
 		System.out.println("Η αρχή του παιχνιδιού...");
 		answer_given=q1();
 		answer_given=q2(answer_given);
