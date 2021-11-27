@@ -3,16 +3,16 @@ import java.util.Scanner;
 public class Hercules {
 	private static Scanner in= new Scanner(System.in);
 	private static String answer_given;
-/*Όπως το έχω σκεφτεί δυστυχώς οι ονομασίες θα βγαίνουν μεγάλες. 
- * Μετά την πρώτη κατηγορία θα υπάρχουν υποκατηγορίες
- * a->a1->ak->ak0->ak9...
+/* q1:Ποιος ήταν ο Πατέρας του Ηρακλή
+ * q2:Η Ήρα ζήλευε τον τον Δία και αν ναι πως αντέδρασε;
+ * q3:Ποιον δρόμο επέλεξε ο Ηρακλής;
+ * q4:Πως έπραξε όταν συνειδητοποίησε τι έκανε;
+ * q5:
  */
 	public Hercules() {
 		System.out.println("Η αρχή του παιχνιδιού...");
 		answer_given=q1();
 		answer_given=q2(answer_given);
-		System.out.println("Ιστορία");
-		System.out.println(answer_given);
 		answer_given=q3(answer_given);
 		answer_given=q4(answer_given);
 		answer_given=q5(answer_given);
@@ -166,6 +166,35 @@ public class Hercules {
 		}
 		return "problem";
 	}
+
+		private static String q6() {
+			String answer;
+			int k=0;
+			while (k==0) {
+				System.out.println("Ο Ηρακλής που έσκαψε για να κατευθύνει τα νερά του Πηνειού και του Αλφειού,ώστε να καθαρίσουν οι στάβλοι του Αυγεία;"
+						+ "1) Στα θεμέλια των στάβλων."
+						+"2) Μέσα στους ίδιους τους στάβλους.");
+				answer=in.next();
+				if(answer.equals("1")) {
+					k=1;
+					return answer;
+				} else {
+					System.out.println("Τι αποτελέσματα είχε αυτό στους στάβλους και στην περιοχή;" 
+							+ "1) Καταστράφηκαν οι στάβλοι εντελώς."
+							+"2) Δεν επηρρεάστηκαν καθόλου.");
+					answer=in.next();
+					if(answer.equals("1")) {
+						System.out.println("Τα ζώα το έσκασαν και κατέστερψαν την πόλη, με αποτέλεσμα να ζητήσουν την ευθανασία του Ηρακλή."
+								+ "Επαναπροσπάεια του παίκτη.");
+					} else if (answer.equals("2")){
+						System.out.println("Δεν είχε κανένα αποτέλεσμα στους στάβλους και στην γύρω περιοχή. Ο Ηρακλής συνέχισε κανονικά τη ζωή του ως ένας συνηθισμένος άνθρωπος.");
+						k=1;
+						ordinaryPerson();
+					}
+				}
+			}
+		}
+
 	
 	private static void ordinaryPerson() {
 		System.out.println("\n\n\nγειαααα");
