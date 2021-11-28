@@ -2,87 +2,98 @@ import java.util.Scanner;
 
 public class Hercules {
 	private static Scanner in= new Scanner(System.in);
-	private static String answer_given;
-/* q1:Ποιος ήταν ο Πατέρας του Ηρακλή
+	private static String answer_given, answer = null;
+	private static int checkpoint=1;
+	
+	/* q1:Ποιος ήταν ο Πατέρας του Ηρακλή
  * q2:Η Ήρα ζήλευε τον τον Δία και αν ναι πως αντέδρασε;
  * q3:Ποιον δρόμο επέλεξε ο Ηρακλής;
  * q4:Πως έπραξε όταν συνειδητοποίησε τι έκανε;
  * q5:
  */
-	public Hercules() {
+	public static void main(String []args) throws NoSuchAnswer {
 		System.out.println("Η αρχή του παιχνιδιού...");
-		answer_given=q1();
-		answer_given=q2(answer_given);
-		answer_given=q3(answer_given);
-		answer_given=q4(answer_given);
-		answer_given=q5(answer_given);
-		/*answer_given=q6(answer_given);
+		while (checkpoint != 10) {
+			if (checkpoint == 1) {
+				answer_given=q1();
+			} else if(checkpoint == 2) {
+				answer_given=q2(answer_given);
+			} else if (checkpoint == 3) {
+				answer_given=q3(answer_given);
+			} else if (checkpoint == 4) {
+				answer_given=q4(answer_given);
+			} else if (checkpoint == 5) {
+				answer_given=q5(answer_given);
+			} else if (checkpoint == 6) {
+				answer_given=q6(answer_given);}
+		}
+		/*} else if (checkpoint == 7) {
 		answer_given=q7(answer_given);
+		} else if (checkpoint == 8) {
 		answer_given=q8(answer_given);
+		} else if (checkpoint == 9) {
 		answer_given=q9(answer_given);
+		} else if (checkpoint == 10) {
 		answer_given=q10(answer_given);*/
 	}
 
-	/*
-	 * Η 1η Ερώτηση: answer η απάντηση που θα δώσει ο χρήστης. Έπειτα αυτό επιστρέφει ως το "answer_given"
-	 */
-	private static String q1() {
-		String answer;
+	// 1η Ερώτηση: answer η απάντηση που θα δώσει ο χρήστης. Έπειτα αυτό επιστρέφει ως το "answer_given"
+	
+	private static String q1() throws NoSuchAnswer{
+		checkpoint++;
 		System.out.println("Ποιός ήταν ο πατέρας του Ηρακλή;\n "
 							+ "1)Δίας.\n "
 							+ "2)Αμφιτρύωνας.");
 		answer = in.next();
-		return answer;
+		if (answer.equals("1") || (answer.equals("2"))) {
+		return answer;}
+		else { throw new NoSuchAnswer();}
 	}
 
-	private static String q2(String already_answered) {
-		String answer = null;
-		switch (already_answered){
+	private static String q2(String already_answered) throws NoSuchAnswer{
+		checkpoint++;
+		if (already_answered.equals("1")){
 		
-		case "1":
 			System.out.println("Η Ήρα ζήλευε τον Δία και αν ναι πως αντέδρασε;\n "
 								+ "1)Ναι.\n "
 								+ "2)Όχι.");
 			answer = in.next();
 			
 			if (answer.equals ("1")) {
-				System.out.println("1)Η Ήρα έστειλα φίδια για να σκοτώσουν τον Ηρακλή.\n"
-								 + "2)Η Ήρα πήγε η ίδια να σκοτώσει τον Ηρακλή.");
+				System.out.println(" 1)Η Ήρα έστειλα φίδια για να σκοτώσουν τον Ηρακλή.\n"
+								 + " 2)Η Ήρα πήγε η ίδια να σκοτώσει τον Ηρακλή.");
 				answer = in.next();
 				if (answer.equals("1")) {
-					return answer;
 					
 				} else if (answer.equals("2")) {
-					System.out.println("1)Η Ήρα απέτυχε και δεν σταμάτησε να αναζητεί τρόπο εκδίκησης.\n "
-									 + "2)Η Ήρα πέτυχε τον στόχο της και ο Ηρακλής πέθανε.");
+					System.out.println(" 1)Η Ήρα απέτυχε και δεν σταμάτησε να αναζητεί τρόπο εκδίκησης.\n "
+									 + " 2)Η Ήρα πέτυχε τον στόχο της και ο Ηρακλής πέθανε.");
 					answer = in.next();
 					if (answer.equals("1")) {
-						return answer;
 						
 					} else if (answer.equals("2")) {
-						System.out.println("Ο Ηρακλής πέθανε πολύ νωρίς στην Ιστορία.");
-						reset(0,'a');
-					}
-				}
-				
-				
+						System.out.println("Ο Ηρακλής πέθανε πολύ νωρίς στην Ιστορία. \n");
+						reset();
+
+					} else { throw new NoSuchAnswer();}
+
+				} else { throw new NoSuchAnswer();}
+			
 			} else if (answer.equals ("2")){
-				System.out.println("Δεν ζήλευε, οπότε ο Ηρακλής δεν έμαθε ποτέ τις πραγματικές του δυνάμεις.");
+				System.out.println("Δεν ζήλευε, οπότε ο Ηρακλής δεν έμαθε ποτέ τις πραγματικές του δυνάμεις. \n");
 				ordinaryPerson();
-			}		
-		break;
+				return answer = "1";
+			} else { throw new NoSuchAnswer();}	
 		
-		case "2":
-			System.out.println("Ο Ηρακλής μεγάλωσε ως κοινός θνητός");
+		} else if (answer.equals("2")){
+			checkpoint--;
 			ordinaryPerson(); //Η Ιστορία με πατέρα τον Αμφιτρύωνα.
-			answer =  "2";
-		break;
-		}
+		  }
 		return answer;
 	}
 	
-	private static String q3(String already_answered) {
-		String answer;
+	private static String q3(String already_answered) throws NoSuchAnswer{
+		checkpoint++;
 			System.out.println("Ποιόν δρόμο επέλεξε ο Ηρακλής;\n "
 				+"1)Της Αρετής. \n "
 				+"2)Της Κακίας. \n ");
@@ -100,15 +111,15 @@ public class Hercules {
 			        	return answer;
 			        } else if (answer.equals("2")){
 			        	System.out.println("Έφτασε σε μεγάλη ηλικία.");
-			        	reset(1,'2');
+			        	reset();
 			        	return answer;
 			        }
 			}
-			return "problem";
+			return "0";
 	}
 	
-	private static String q4(String already_answered) {
-		String answer;
+	private static String q4(String already_answered) throws NoSuchAnswer{
+		checkpoint++;
 			System.out.println("Πως έπραξε ο Ηρακλής όταν συνειδητοποίησε τι έκανε;\n" 
 						+"1)Πήγε στο μαντείο των Δελφών για να μάθει πως μπορούσε να επανορθώσει. \n"
 			            +"2)Αυτοκτόνησε από την θλίψη του. \n" );
@@ -118,14 +129,14 @@ public class Hercules {
 				return answer;
 			} else if (answer.equals("2")) {
 				System.out.println("Έπειτα αυτοκτόνησε από την θλίψη του και πέθανε νωρίς στην ιστορία.");
-				reset(1,'1');
+				reset();
 				return answer;
 			}
 			return "problem";
 			
 	}
-	private static String q5(String already_answered) {
-		String answer;
+	private static String q5(String already_answered) throws NoSuchAnswer{
+		checkpoint++;
 		int k=0;
 		// System.out.println("Αφήγηση σχετικά με την Λερναία Ύδρα.");
 		while (k == 0) {
@@ -140,7 +151,7 @@ public class Hercules {
 		} else if (answer.equals("2")) {
 			System.out.println("Τα κατάφερε, αλλά η Λερναία Ύδρα δεν πέθανε και έτσι κατάφερε να σκοτώσει τον Ηρακλή.);");
 			k=1;
-			reset(5,'1');
+			reset();
 		} else if (answer.equals("3")) {
 			System.out.println("Τι έκανε μετά; \n"
 					+ "1)Σταμάτησε να τρέχει και προσπάθησε να ανασυγκρωτηθεί. \n"
@@ -158,7 +169,7 @@ public class Hercules {
 					k=0;
 				} else {
 					System.out.println("Αυτοκτόνησε από την θλίψη του.");
-					reset(0,'2');
+					reset();
 				}
 					
 			}
@@ -167,8 +178,8 @@ public class Hercules {
 		return "problem";
 	}
 
-		private static String q6() {
-			String answer;
+		private static String q6(String already_answered) throws NoSuchAnswer{
+			checkpoint++;
 			int k=0;
 			while (k==0) {
 				System.out.println("Ο Ηρακλής που έσκαψε για να κατευθύνει τα νερά του Πηνειού και του Αλφειού,ώστε να καθαρίσουν οι στάβλοι του Αυγεία;"
@@ -178,7 +189,7 @@ public class Hercules {
 				if(answer.equals("1")) {
 					k=1;
 					return answer;
-				} else {
+				} else if (answer.equals("2")){
 					System.out.println("Τι αποτελέσματα είχε αυτό στους στάβλους και στην περιοχή;" 
 							+ "1) Καταστράφηκαν οι στάβλοι εντελώς."
 							+"2) Δεν επηρρεάστηκαν καθόλου.");
@@ -193,14 +204,15 @@ public class Hercules {
 					}
 				}
 			}
+			return answer="0";
 		}
 
 	
 	private static void ordinaryPerson() {
-		System.out.println("\n\n\nγειαααα");
+		checkpoint--;
 	}
 	
-	private static void reset(int checkpoint, char answergiven) {
-		System.out.println("\n\n\nγειαααα");
+	private static void reset() {
+		checkpoint--;
 	}
 }
