@@ -10,7 +10,7 @@ public class Hercules {
 	 * αντέδρασε; q3:Ποιον δρόμο επέλεξε ο Ηρακλής; q4:Πως έπραξε όταν
 	 * συνειδητοποίησε τι έκανε; q5:
 	 */
-	public static void main(String[] args) throws NoSuchAnswer {
+	public Hercules() throws NoSuchAnswer {
 		System.out.println("Η αρχή του παιχνιδιού...");
 		while (checkpoint != 10) {
 			if (checkpoint == 1) {
