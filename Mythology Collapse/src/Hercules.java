@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Hercules {
 	final private static Scanner in = new Scanner(System.in);
 	private static String answer_given, answer = null;
-	private static int checkpoint = 6;
+	private static int checkpoint = 1;
 
 	/*
 	 * q1:Ποιος ήταν ο Πατέρας του Ηρακλή q2:Η Ήρα ζήλευε τον τον Δία και αν ναι πως
