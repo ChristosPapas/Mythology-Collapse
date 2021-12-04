@@ -433,7 +433,7 @@ public class Hercules {
 		} else {
 			throw new NoSuchAnswer();
 		}
-
+System.out.println();
 		//Τίτλοι τέλους
 	}
 
