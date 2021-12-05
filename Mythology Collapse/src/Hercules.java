@@ -312,13 +312,9 @@ public class Hercules {
 				reset();
 			
 			}
-
 			break;
-		}
-
-		
+		}	
 	}
-
 
 	private static void theBelt() throws NoSuchAnswer {
 		System.out.println("\nΜετά από το κατόρθωμα αυτό του Ηρακλέους, η κόρη του Ευρυσθέα, η Αδμήτη, ζήτησε να της φέρει τη ζώνη της Ιππολύτης,"
@@ -341,8 +337,6 @@ public class Hercules {
 			reset();
 
 		}
-
-		
 	}
 
 	private static void dwarfBrothers() throws NoSuchAnswer {
@@ -371,14 +365,11 @@ public class Hercules {
 				reset();
 			
 			}
-
 		} else if (answer == 3) {
 			System.out.println("\nΟι Πυγμαίοι πήραν την εκδίκηση τους.");
 			reset();
 			
-		}
-		
-		
+		}	
 	}
 
 	private static void wifeBetrayal() throws NoSuchAnswer {
