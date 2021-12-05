@@ -15,40 +15,15 @@ import java.util.InputMismatchException;
 public class Odysseus {
 	
 	private static Random randValue= new Random();
-	private static Scanner input= new Scanner(System.in);
 	private static boolean kirki= false;
-	private static boolean getHelp=false;
 	private static boolean disease=false;
 	private static int answer;
 	private static boolean treasure=false;
 	private static Timer timer= new Timer();
 	private static TimerTask task =new SetTimerTask();
 	private static boolean end=false;
+	private static Quiz q = new Quiz();
 	
-	
-
-	private static void checkAnswer(int noOfAnswers) {
-		boolean continueLoop=true;
-		do {
-			try {
-				answer= input.nextInt();
-				continueLoop=false;
-			}catch(InputMismatchException exception){
-				input.nextLine(); //erases input so that the user can try again without terminating the program
-				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
-			}
-		}while(continueLoop);	
-	}
-			
-	private static void takeAnAnswer(int noOfAnswers) {
-		do {
-			checkAnswer(noOfAnswers);
-			if (answer > noOfAnswers || answer<=0) {					
-				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
-			}	
-		} while (answer > noOfAnswers || answer<=0);
-	}
-		
 
 	public Odysseus() {
 				
@@ -78,7 +53,7 @@ public class Odysseus {
 				+ "\n2. Κίτρινος "
 				+ "\n3. Κόκκινος "
 				+ "\nΠοιόν θα διαλέξει ο Οδυσσέας;");
-		takeAnAnswer(3);
+		answer = Quiz.takeAnAnswer(3);
 		
 		if(answer==1) {
 			System.out.println("Χμμ, ο Οδυσσέας φαίνεται να επέλεξε τον πορτοκαλί καρπό.Υπάρχει, όμως, κάτι που δεν γνώριζε εξαρχής..."
@@ -109,9 +84,9 @@ public class Odysseus {
 	private static void help() {
 		System.out.printf("\n\n%5s\n%10s","Ο Οδυσσέας βρίσκεται σε κίνδυνο!!!!","Αν θες να τον σώσεις απάντησε σωστά στην παρακάτω ερώτηση.\n\n");
 		System.out.println("Θα βοηθήσεις τον ήρωα να επιβιώσει;\nΑπάντησε:\n1. ΝΑΙ\n2. ΟΧΙ\n");
-		takeAnAnswer(2);
+		answer = Quiz.takeAnAnswer(2);
 		if(answer==1) {
-			if(questionPicker (randValue.nextInt(20)+1)==true) {  //getQuestion prints the question and returns true is the answer is true or false for the opposite situation 
+			if(q.questionPicker() == true) {  //getQuestion prints the question and returns true is the answer is true or false for the opposite situation 
 			System.out.println("\nΟρίστε ένα hint για τη συνέχιση του παιχνιδιού:"
 					+ "\n\nΟ ήρωας είναι δηλητηριασμένος από τον κόκκινο λωτό!"
 					+ "\nΗ κατάστασή του είναι πολύ σοβαρή!Για να τον σώσεις πρέπει να φτάσεις"
@@ -133,14 +108,14 @@ public class Odysseus {
 				+ "\n2.Ξύλινη Λόγχη"
 				+ "\n3.Σφεντόνα που ποτέ δεν αστοχεί"
 				+ "\nΠοιά θα είναι η επιλογή του Οδυσσέα;\n\n");
-		takeAnAnswer(3);
+		answer = Quiz.takeAnAnswer(3);
 		cyclopsGuns(answer,randValue.nextInt(2)+1);
 		
 		if(end==false) {
 			System.out.println("\nΚατά τον απόπλου από το νησί, ο Οδυσσέας έρχεται αντιμέτωπος με το εξής δίλημμα:\n"
 					+ "1.Να αποκαλύψει το όνομά του  στον Πολύφημο και να ικανοποιήσει την αλαζονική του πλευρά.\n"
 					+ "2.να αποχωρήσει αφήνοντάς τον να πιστεύει ότι τον σκότωσε ο Κανένας.\n\n");
-			takeAnAnswer(2);
+			answer = Quiz.takeAnAnswer(2);
 			if(answer==1) {
 				aiolos();
 			}else {
@@ -208,7 +183,7 @@ public class Odysseus {
 				+ "\nτου μακριά από την πατρίδα, στο νησί του Αιόλου. Εκεί αφού ξεκουράζονται, ο Αίολος προσφέρεται να κάνει ένα δώρο στον Οδυσσέα και τους συντρόφους του."
 				+ "Ο Αίολος τους προσφέρει:\n1.Θησαυρό\n2.Φαγοπότι\n3.Μυστηριώδης Ασκός"
 				+ "\nΤι επιλέγει ,άραγε, ο Οδυσσέας?\n\n");
-		takeAnAnswer(3);
+		answer = Quiz.takeAnAnswer(3);
 		if(answer==1) {
 			System.out.println("Ο Οδυσσέας αποφασίζει τελικά να διαλέξει το χρυσάφι.Με αυτό  σκόπευε να ανταμείψει τους ναύτες όταν θα αποβιβάζονταν  στην Ιθάκη για να τους "
 					+ "ευχαριστήσει για την εμπιστοσύνη που του έδειξαν στον μεγάλο αυτό αγώνα. Ωστόσο, φεύγοντας από το νησί το πλοίο βάρυνε απότομα με αποτέλεσμα οι νάυτες"
@@ -224,7 +199,7 @@ public class Odysseus {
 					
 			System.out.println("Οι ναύτες, ωστόσο, μη γνωρίζοντας το περιεχόμενο του ασκού μπαίνουν στον πειρασμό να τον ανοίξουν.\r\n"
 					+ "\nΤι αποφασίζουν να κάνουν τελικά;\n1.Εμπιστεύονται τον Οδυσσέα και δεν ανοίγουν τον ασκό.\n2.Ανοίγουν τον ασκό νομίζοντας ότι κρύβει κάποιο θησαυρό.\n\n");
-			takeAnAnswer(2);
+			answer = Quiz.takeAnAnswer(2);
 			if(answer==1) {
 				System.out.println("Οι ναύτες αποφασίζουν να δείξουν εμπιστοσύνη στον αρχηγό τους και έτσι δεν ανοίγουν τον μυστηριώδη ασκό, παρά την περιέργειά τους.\r\n"
 						+ "Οι μέρες κυλούν λοιπόν αρμονικά ώσπου φτάνουν τελικά στην πολυαγαπημένη τους Ιθάκη.\n\n");
@@ -246,7 +221,7 @@ public class Odysseus {
 				+ "Τεράστιες πέτρες πετάγονται στα πλοία, ενώ κάποιοι από τους συντρόφους αποτελούν το γεύμα των τεράτων...\n\n");
 		System.out.println("Όσο οι νάυτες προσπαθούν να γλιτώσουν από την επίθεση των τεράτων, ένας τεράστιος βράχος εξφενδονίζεται προς το καράβι του Οδυσσέα!"
 				+ "\nΘα προλάβουν οι ναύτες να αμυνθούν και να αποφύγουν την θανατηφόρα βολή?\nΟι ναύτες στρίβουν το πηδάλιο:\n1. προς τα δεξιά.\n2. προς τα αριστερά.\n\n"); 
-		takeAnAnswer(2);
+		answer = Quiz.takeAnAnswer(2);
 		if (answer== randValue.nextInt(2)+1) {
 			System.out.println("Η γιγαντιαία πέτρα βρίσκει τελικά το στόχο της. Το πλήρωμα τραυτίζεται και οι επιζώντες πέφτουν στον νερό για να σωθούν. "
 					+ "\nΩστόσο, η λιθοπομπή συνεχίζεται και μια από τις πέτρες πετυχαίνει τον Οδυσσέα με αποτέλεσμα να χάσει τη ζωή του...\n\n");
@@ -272,7 +247,7 @@ public class Odysseus {
 				+ "με τη μάγισσα Κίρκη που αφού τους δωροδοκεί με φαγοπότια, τους μετατρέπει σε ζώα.\r\nΗ ώρα περνά και οι ναύτες δεν έχουν εμφανιστεί.\r\n"
 				+ "Ο Οδυσσέας πηγαίνει  να τους αναζητήσει, πέφτει όμως σε ένα λάκκο και του πέφτει το ξίφος .\r\n"
 				+ "Βρίσκει το ξίφος τελικά, ή συνεχίζει χωρίς αυτό ?\n1.Βρίσκει το ξίφος.\n2.Δεν το εντοπίζει.\n\n");
-		takeAnAnswer(2);
+		answer = Quiz.takeAnAnswer(2);
 		if(answer==1 && kirki==false) {
 			System.out.println("Αφού εντοπίζει το ξίφος του ο Οδυσσέας, ακολουθεί τα ίχνη των συντρόφων του και τους πετυχαίνει λίγο αργότερα, την ώρα που η Κίρκη τους μετατρέπει σε ζώα. "
 					+ "\nΜε λεπτές κινήσεις την πλησιάζει χωρίς να τον δει και τη σημαδεύει με το ξίφος απειλώντας την να επαναφέρει τους συντρόφους του.Εκείνη τρομαγμένη αλλάζει τους ναύτες"
@@ -285,7 +260,7 @@ public class Odysseus {
 			System.out.println("Η Κίρκη, όντας και η ίδια ένα μαγικό πλάσμα, καταλαβαίνει αμέσως ότι η αντίδραση του άγνωστου νάυτη είναι αποτέλεσμα κάποιου ξορκιού.Έτσι, αποφασίζει να δώσει"
 					+ "\nστον ίδιο τη δυνατότητα να διαλέξει αν θέλει πραγματικά να μείνει μαζί της ή να φύγει.Προσφέρεται, λοιπόν, να προβάλει μέσω ενός οράματος την πιο έντονή του ανάμνηση.\n\n"
 					+ "Θα δεχτεί άραγε ο Οδυσσέας να εισχωρήσει η Κίρκη στις βαθύτερες σκέψεις του;\n1.Επιτρέπει στην Κίρκη να ανασύρει μνήμες.\n2.Δεν επιτρέπει στην Κίρκη να μπει στο μυαλό του.\n\n");
-					takeAnAnswer(2);
+			answer = Quiz.takeAnAnswer(2);
 					if(answer==1) {
 						System.out.println("Ο Οδυσσέας, απορώντας με την πρόταση της μάγισσας, της επιτρέπει να διαβάσει το μυαλό του. Εκείνη προβάλλει τελικά τη στιγμή της γέννας του γιού του"
 								+ "\nκαι αμέσως ο Οδυσσέας συνειδητοποιεί ότι στην πραγματικότητα δεν είναι ερωτευμένος μαζί της και τελικά αποφασίζει αφού ευχαριστήσει την Κίρκη να γυρίσει στην "
@@ -321,7 +296,7 @@ public class Odysseus {
 					+ "την Πηνελόπη, η οποία περιτριγυρίζεται από φιλόδοξους μνηστήρες.\n"
 					+ "Η μόνη ελπίδα για να εισχωρήσει στο παλάτι και να σώσει την οικογένεια και τον θρόνο του είναι μια θεϊκή παρέμβαση. Θα βοηθήσει η Αθηνά αυτή τη φορά τον Οδυσσέα, ή θα τον αφήσει στο έλεος της μοίρας?"
 					+ "\n1. Θα δεχτεί θεϊκή βοήθεια.\n2. Η Αθηνά δεν θα μπορέσει να τον βοηθήσει.");
-			takeAnAnswer(2);
+			answer = Quiz.takeAnAnswer(2);
 			
 	//έκβαση ανάλογα την απάντηση
 			if (answer==1) {
@@ -342,18 +317,7 @@ public class Odysseus {
 		private static void teiresias() {
 			System.out.println("Επόμενη στάση στο ατέλειωτο ταξίδι ειναι ο Άδης. Εκει συναντάει τον μάντη τειρεσία ο οποίος έχει ένα πολύ σημαντικό χρησμό για την εξέλιξη της ιστορίας.\n"
 					+ " Για να πάρει το χρησμό πρέπει να απαντήσει σωστά σε ένα κουίζ:");
-			Random rand = new Random();
-			int rand1 = rand.nextInt(20); //from 0 to 19
-			
-			do {
-				if(availableQuestions[rand1] == false) {
-					rand1 = rand.nextInt(20);
-				}
-			} while (availableQuestions[rand1] == false);
-			
-			availableQuestions[rand1] = false;
-			
-			if (questionPicker(rand1+1) == false) {
+			if (q.questionPicker() == false) {
 				System.out.println("Ο Οδυσσέας θα αναγκαστεί να συνεχίσει το ταξίδι του έχοντας χάσει αυτή τη σημαντική πληροφορία...");
 			} else {
 				System.out.println("\nΣαν θα βρεθείς στο νησί του Φωτός, μην αγγίξεις τα βόδια του ήλιου. Αν προβείς σε αυτή την ιεροσυλία θα έχεις υπογράψει την καταδίκη σου.\n"
@@ -369,7 +333,7 @@ public class Odysseus {
 			System.out.println("Μετά τον μάντη Τειρεσία, το καράβι του Οδυσσέα οδηγείται στις Σειρήνες.\n"
 					+ "Εκεί ο Οδυσσέας πάνω στη λαχτάρα να ακούσει το μαγευτικό τραγούδι για το οποίο μιλούν οι ιστορίες, φτάνει στο  δίλημμα για το αν θα δεθεί ή όχι στο καταρτι.\n"
 					+ "1. Θα δεθεί στο κατάρτι.\n2. Δεν θα δεθεί.");
-			takeAnAnswer(2);
+			answer = Quiz.takeAnAnswer(2);
 			
 	//έκβαση ανάλογα την απάντηση
 			if (answer == 1) {
@@ -406,15 +370,15 @@ public class Odysseus {
 			System.out.println("Πλέον οι νάυτες πλέουν προοδευτικά προς το νησί του ήλιου. Εκεί οι σύντροφοι πεινασμένοι αναζητούν τροφή στα βόδια του θεού.\n"
 					+ "Θα τραφούν τελικά, όμως με τα ιερά ζώα?\n"
 					+ "1. Θα τραφούν με τα βόδια.\n2. Δεν θα αγγίξουν τα βόδια.");
-			takeAnAnswer(2);
-			boolean answer2= answer;
+			answer = Quiz.takeAnAnswer(2);
+			int answer2= answer;
 				if (answer2 == 1)
 					{System.out.println("Οι σύντροφοι που πέθαιναν από την πείνα, τρέφονται τελικά από τα βόδια και έτσι, εκπληρώνεται η προφητεία του Τειρεσία,\n"
 						+ "ότι τα βάσανα του ήρωα δεν τελειώνουν εκεί...\n\n"
 						+ "Ο Δίας, ωστόσο, βλεποντας όλο αυτό το διάστημα τη δυστυχία του ήρωά μας αποφασίζει να του δώσει μια ευκαιρία να γυρίσει στην Ιθάκη.\n"
 						+ "Του προτείνει να φτάσει άμεσα στην Ιθάκη με αντάλλαγμα να θυσιάσει ένα πολύ αγαπημένο του πρόσωπο. Τι θα κάνει άραγε ο Οδυσσέας;\n"
 						+ "1. Θα δεχτεί την προσφορά του Δία.\n2. Δεν θα τη δεχτεί.");
-				takeAnAnswer(2);
+					answer = Quiz.takeAnAnswer(2);
 				if (answer == 1) {
 					System.out.println("Ο Οδυσσέας, αποδέχεται τελικά την πρόταση του Δία και έτσι, αυτός τον στέλνει με ευνοϊκούς ανέμους στην Ιθάκη. Ωστόσο, λίγο πριν φτάσει εκεί, "
 							+ "\nμαθαίνει από μια τυχαία συζήτηση αγνώστων, ότι ο αγαπημένος του γιος, ο Τηλέμαχος, είναι νεκρός από άγνωστη για τους κατοίκους του νησιού αιτία...\n\n");
@@ -435,7 +399,7 @@ public class Odysseus {
 		private static void kalypso () {
 			System.out.println("Εκεί ο Οδυσσέας θα ξεχάσει άραγε την πατρίδα και τη γυναίκα του ή θα θελήσει με την βοήθεια της Αθηνάς να επιστρέψει στα πολυαγαπημένα του πρόσωπα ?\n\n"
 					+ "1. Θα ζητήσει τη βοήθεια της Αθηνάς\n2. Θα παραμείνει στο νησί και θα περάσει την υπόλοιπη ζωή του εκεί");
-			takeAnAnswer(2);
+			answer = Quiz.takeAnAnswer(2);
 			if (answer == 2) {
 				System.out.println("Η καρτερικότητα και η αγάπη της Καλυψώς κατά την παραμονή του στο νησί, μάγεψε τελικά τον Οδυσσέα.\n"
 						+ "Η πατρίδα και η οικογένειά του αποτελούσαν πλέον ένα πεθαμένο όνειρο για εκέινον, που αποφάσισε να περάσει την υπόλοιπη ζωή του με την κοπέλα που τον έσωσε.");
@@ -456,20 +420,10 @@ public class Odysseus {
 					+ "\nτην συμμετοχή του στον πόλεμο της Τροίας στο πλευρό των Αχαιών. Οι Φαίακες που εξυμνούσαν τους Αχαιούς, αποφασίζουν αμέσως να τον βοηθήσουν, αφού, όμως, πρώτα πειστούν"
 					+ "\nότι ο Οδυσσέας τους λέει αλήθεια. Του κάνουν λοιπόν 3 ερωτήσεις για τον πόλεμο στην Τροία.");
 			int counter = 0;
-			Random rand = new Random();
-			int rand1;
 			
 			for (int i=0;i<3;i++) {
-				rand1 = rand.nextInt(20);
-				do {
-					if(availableQuestions[rand1] == false) {
-						rand1 = rand.nextInt(20);
-					}
-				} while (availableQuestions[rand1] == false);
-				availableQuestions[rand1] = false;
-				if (questionPicker(rand1+1)) {
-					counter++;
-				}
+				q.questionPicker();
+				counter++;
 			}
 			
 			if (counter >= 2) {
@@ -487,444 +441,7 @@ public class Odysseus {
 		
 		
 
-		
-		
-		
-		
-		
-		
-		//quiz methods and code
-		private static boolean [] availableQuestions = {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
-		private static int answerQuiz;
-		private static Scanner in = new Scanner (System.in);
-		
-		private static boolean questionPicker (int questionNo) {
-			boolean returnVariable;
-			switch (questionNo) {
-				case 1:
-					returnVariable = question1();
-					break;
-				case 2:
-					returnVariable = question2();
-					break;
-				case 3:
-					returnVariable = question3();
-					break;
-				case 4:
-					returnVariable = question4();
-					break;
-				case 5:
-					returnVariable = question5();
-					break;
-				case 6:
-					returnVariable = question6();
-					break;
-				case 7:
-					returnVariable = question7();
-					break;
-				case 8:
-					returnVariable = question8();
-					break;
-				case 9:
-					returnVariable = question9();
-					break;
-				case 10:
-					returnVariable = question10();
-					break;
-				case 11:
-					returnVariable = question11();
-					break;
-				case 12:
-					returnVariable = question12();
-					break;
-				case 13:
-					returnVariable = question13();
-					break;
-				case 14:
-					returnVariable = question14();
-					break;
-				case 15:
-					returnVariable = question15();
-					break;
-				case 16:
-					returnVariable = question16();
-					break;
-				case 17:
-					returnVariable = question17();
-					break;
-				case 18:
-					returnVariable = question18();
-					break;
-				case 19:
-					returnVariable = question19();
-					break;
-				default:
-					returnVariable = question20();
-					break;
-			}
-			return returnVariable;
-		}
-		
-		private static boolean question1() {
-			System.out.println("Τι εννοούμε με τη φράση δούρειος ίππος;");
-			System.out.println("1. Τρόπος εξαπάτησης");
-			System.out.println("2. Γρήγορο άλογο");
-			System.out.println("3. Θεϊκό σχέδιο");
-			System.out.println("4. Πολεμικό άρμα");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 1) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question2() {
-			System.out.println("Ποιοι ήταν οι γονείς του Αχιλλέα;");
-			System.out.println("1. Ο Πηλέας και η Θέτιδα");
-			System.out.println("2. Ο Δίας και η Θέτιδα");
-			System.out.println("3. Ο Δίας και η Αλκμήνη");
-			System.out.println("4. Ο Αθάμας και η Νεφέλη");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 1) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question3() {
-			System.out.println("Ποιος κατασκεύασε την πανοπλία του Αχιλλέα;");
-			System.out.println("1. Ο Θεός Άρης");
-			System.out.println("2. Ο Θεός Ήφαιστος");
-			System.out.println("3. Η θαλασσινή θεά Θέτιδα");
-			System.out.println("4. Η θεά Αθηνά");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 2) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question4() {
-			System.out.println("Τι είναι το Ίλιον;");
-			System.out.println("1. Η πόλη της Τροίας");
-			System.out.println("2. Ο ήλιος");
-			System.out.println("3. Ο Τρωικός πόλεμος");
-			System.out.println("4. Το ποίημα που εξιστορεί τον Τρωικό πόλεμο");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 1) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			
-			}
-		}
-		
-		private static boolean question5() {
-			System.out.println("Τι εννοούμε με τη φράση μήλο της Έριδας;");
-			System.out.println("1. Αιτία για τσακωμό");
-			System.out.println("2. Νόστιμο φρούτο");
-			System.out.println("3. Πτώση ενός μήλου");
-			System.out.println("4. Πολύτιμο δώρο");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 1) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			
-			}
-		}
-		
-		private static boolean question6() {
-			System.out.println("Τίνος ιδέα ήταν ο Δούρειος ίππος;");
-			System.out.println("1. Του γερο-Νέστορα");
-			System.out.println("2. Του Αγαμέμνονα");
-			System.out.println("3. Του Οδυσσέα");
-			System.out.println("4. Του Μενέλαου");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 3) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			
-			}
-		}
-		
-		private static boolean question7() {
-			System.out.println("Ποιος μάντης έδωσε χρησμό στους Αχαιούς ότι θα έπαιρναν την Τροία σε δέκα χρόνια;");
-			System.out.println("1. Ο Φινέας");
-			System.out.println("2. Ο Κάλχας");
-			System.out.println("3. Ο Τειρεσίας");
-			System.out.println("4. Ο Άνιος");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 4) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			
-			}
-		}
-		
-		private static boolean question8() {
-			System.out.println("Ποιος σκότωσε τον Έκτορα;");
-			System.out.println("1. Ο Αγαμέμνονας");
-			System.out.println("2. Ο Αίαντας");
-			System.out.println("3. Ο Αχιλλέας");
-			System.out.println("4. Ο Οδυσσέας");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 3) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			
-			}
-		}
-		
-		private static boolean question9() {
-			System.out.println("Ποια ήταν η ωραία γυναίκα, που έγινε αφορμή για τον Τρωικό πόλεμο;");
-			System.out.println("1. Η Ανδρομάχη, γυναίκα του Έκτορα");
-			System.out.println("2. Η Χρυσηίδα, κόρη του ιερέα Χρύση");
-			System.out.println("3. Η Ιφιγένεια, κόρη του βασιλιά Αγαμέμνονα");
-			System.out.println("4. Η Ελένη, γυναίκα του βασιλιά Μενέλαου");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 4) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question10() {
-			System.out.println("Πώς σκοτώθηκε ο Αχιλλέας;");
-			System.out.println("1. Χτυπήθηκε από κοντάρι στον λαιμό");
-			System.out.println("2. Χτυπήθηκε από φαρμακωμένο βέλος στη δεξιά φτέρνα του");
-			System.out.println("3. Τον έπνιξαν δυο τεράστια φίδια σταλμένα από τον θεό Ποσειδώνα");
-			System.out.println("4. Κεραυνοβολήθηκε από τον θεό Δία");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 2) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question11() {
-			System.out.println("Γιατί ο Αχιλλέας αποσύρθηκε στη σκηνή του και έπαψε να πολεμάει τον δέκατο χρόνο της πολιορκίας;");
-			System.out.println("1. Κατάλαβε ότι δεν είχε νόημα ο πόλεμος, επειδή τα τείχη της Τροίας ήταν απόρθητα");
-			System.out.println("2. Θύμωσε με τον Αγαμέμνονα, γιατί δεν σεβάστηκε τον Χρύση που ήταν ιερέας του Απόλλωνα");
-			System.out.println("3. Θύμωσε, επειδή ο Αγαμέμνονας του πήρε τη σκλάβα Βρισηίδα.");
-			System.out.println("4. Θύμωσε, επειδή ο Αγαμέμνονας δεν τον άφησε να γίνει αυτός αρχηγός των Αχαιών");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 3) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question12() {
-			System.out.println("Τι έκανε ο Αχιλλέας, όταν ο Πάτροκλος του ζήτησε να πολεμήσει εκείνος στη θέση του;");
-			System.out.println("1. Δεν δέχτηκε, επειδή φοβόταν μήπως τον αναγνωρίσουν οι Τρώες και τον σκοτώσουν");
-			System.out.println("2. Δέχτηκε. Του έδωσε την πανοπλία του, ενώ του είπε να κυνηγήσει τους Τρώες και να εισβάλει στην πόλη τους");
-			System.out.println("3. Δεν δέχτηκε, επειδή είχε ορκιστεί να μην πολεμήσει με κανέναν τρόπο");
-			System.out.println("4. Δέχτηκε. Του έδωσε την πανοπλία του, ενώ του είπε να διώξει τους Τρώες από το στρατόπεδο των Αχαιών και να γυρίσει πίσω");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 4) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question13() {
-			System.out.println("Ποιος σκότωσε τον Αχιλλέα;");
-			System.out.println("1. Ο Απόλλωνας");
-			System.out.println("2. Ο Πάρης");
-			System.out.println("3. Ο Έκτορας");
-			System.out.println("4. Ο Αγαμέμνονας");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 2) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question14() {
-			System.out.println("Ποιος αρχαίος ποιητής έγραψε για τον Τρωικό πόλεμο και για τις περιπέτειες του Οδυσσέα;");
-			System.out.println("1. Ο Πίνδαρος");
-			System.out.println("2. Ο Ευριπίδης");
-			System.out.println("3. Ο Ησίοδος");
-			System.out.println("4. Ο Όμηρος");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 4) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question15() {
-			System.out.println("Τι έκανε ο Αχιλλέας, όταν ο Πρίαμος του ζήτησε το σώμα του νεκρού Έκτορα;");
-			System.out.println("1. Οργίστηκε και σκότωσε τον Πρίαμο");
-			System.out.println("2. Συγκινήθηκε και του το έδωσε, αφού πρώτα διέταξε να το πλύνουν και να το στολίσουν");
-			System.out.println("3. Του το έδωσε, επειδή φοβήθηκε μήπως θυμώσουν οι θεοί αν δεν σεβαστεί την επιθυμία του Πριάμου");
-			System.out.println("4. Δεν δέχτηκε και έδιωξε τον Πρίαμο θυμωμένος");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 2) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question16() {
-			System.out.println("Θυσιάστηκε τελικά η Ιφιγένεια στην Αυλίδα;");
-			System.out.println("1. Όχι, την ώρα της θυσίας η θεά Άρτεμις πήρε την Ιφιγένεια από τον βωμό και άφησε στη θέση της ένα ελάφι");
-			System.out.println("2. Όχι, η Ιφιγένεια δεν δέχτηκε να θυσιαστεί");
-			System.out.println("3. Όχι, η μητέρα της Ιφιγένειας δεν την άφησε να πάει στην Αυλίδα για να θυσιαστεί");
-			System.out.println("4. Ναι, η Ιφιγένεια θυσιάστηκε στη θεά Άρτεμη για το καλό της πατρίδας");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 1) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question17() {
-			System.out.println("Ποιος σκότωσε τον Πάτροκλο;");
-			System.out.println("1. Ο Πάρης");
-			System.out.println("2. Ο θεός Απόλλωνας");
-			System.out.println("3. Ο Πρίαμος");
-			System.out.println("4. Ο Έκτορας");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 4) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question18() {
-			System.out.println("Ποιοι θεοί και θεές υποστήριζαν φανερά τους Αχαιούς;");
-			System.out.println("1. Η Αφροδίτη, ο Απόλλωνας και ο Άρης");
-			System.out.println("2. Η Ήρα, η Αθηνά και ο Ποσειδώνας");
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 2) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question19() {
-			System.out.println("Γιατί τα πλοία των Αχαιών έμεναν αραγμένα στην Αυλίδα και δεν ξεκινούσαν για την εκστρατεία;");
-			System.out.println("1. Ο θεός Δίας εμπόδιζε τους ανέμους να φυσήξουν, γιατί δεν ήθελε να πολεμήσουν οι Αχαιοί με τους Τρώες");
-			System.out.println("2. Η θεά Αφροδίτη εμπόδιζε τους ανέμους να φυσήξουν, γιατί ήθελε να προστατέψει τους Τρώες");
-			System.out.println("3. Η θεά Άρτεμις εμπόδιζε τους ανέμους να φυσήξουν, γιατί ο Αγαμέμνονας είχε σκοτώσει το ιερό ελάφι της");
-			System.out.println("4. Οι βασιλιάδες των Αχαιών δεν μπορούσαν να συμφωνήσουν ποιος θα ήταν ο αρχηγός της εκστρατείας");
-			
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 3) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-		
-		private static boolean question20() {
-			System.out.println("Τι παραστάσεις είχε οι ασπίδα του Αχιλλέα;");
-			System.out.println("1. Παραστάσεις ειρηνικές");
-			System.out.println("2. Παραστάσεις με στοιχεία της φύσης (ήλιο, φεγγάρι κλπ)");
-			System.out.println("3. Παραστάσεις που αφορούν τον πόλεμο αλλά και την ειρήνη");
-			System.out.println("4. Σκηνές από την επιλογή του αρχηγού τηε εκστρατείας");
-			
-			 takeAnAnswer(4);
-			 answerQuiz =answer;
-			if (answerQuiz == 3) {
-				System.out.println("Σωστή απάντηση!");
-				return true;
-			} else {
-				System.out.println("Λυπάμαι λάθος απάντηση");
-				return false;
-			}
-		}
-	
 
-
-		private static void availabilityCheckRestore() { //checks for available number of questions and if not one then restores availability
-			int counter=0;
-			for (int i=0; i<availableQuestions.length;i++) {
-				if (availableQuestions[i]) {
-					counter++;
-				}
-			}
-			if (counter == 0) {
-				for (int i=0; i<availableQuestions.length;i++) {
-					availableQuestions[i] = true;
-				}
-			}
-		}
 
 }
 
