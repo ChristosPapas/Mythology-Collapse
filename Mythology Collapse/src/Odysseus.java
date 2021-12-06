@@ -3,7 +3,6 @@ import java.util.Scanner;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.InputMismatchException;
 	
 	class SetTimerTask extends TimerTask{
 		public void run(){
@@ -75,9 +74,9 @@ public class Odysseus {
 			disease=true;
 			timer.schedule(task ,60000*(randValue.nextInt(5)+1)); //1 minute equals 60000, we give the player 1-3 minutes randomly
 			//timer.cancel(); in case he gets the antidote or he gets in ithaki
-			cyclops();
+			
 		}
-
+		cyclops();
 	}
 
 	
