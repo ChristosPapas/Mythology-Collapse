@@ -433,7 +433,7 @@ public class Hercules {
 				continueLoop=false;
 			}catch(InputMismatchException exception){
 				in.nextLine(); //erases input so that the user can try again without terminating the program
-				System.out.printf("\nΠρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
+				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
 			}
 		}while(continueLoop);	
 	}
@@ -444,7 +444,7 @@ public class Hercules {
 		do {
 			checkAnswer(noOfAnswers);
 			if (answer > noOfAnswers || answer<=0) {					
-				System.out.printf("\nΠρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
+				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
 			}	
 		} while (answer > noOfAnswers || answer<=0);
 	}
