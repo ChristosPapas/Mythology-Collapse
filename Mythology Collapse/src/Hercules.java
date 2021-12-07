@@ -1,13 +1,9 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Hercules {
-	final private static Scanner in = new Scanner(System.in);
 	private static int answer_given, answer;
 	private static int checkpoint = 1;
 	private static boolean k = true;
 
-	public static void main(String[] args) throws NoSuchAnswer {
+	public static void main(String[] args) {
 		System.out.println("\nΤο ακόλουθο παιχνίδι θα βασιστεί πάνω σε ερωτήσεις σχετικά με τη ζωή του ήρωα και τους άθλους που διέπραξε.");
 		System.out.println("\nΟ Ηρακλής ήταν αρχαίος μυθικός ήρωας, θεωρούμενος ως ο μέγιστος των Ελλήνων ηρώων."
 				+ "\n\nΩς Άθλοι του Ηρακλέους έχουν καταγραφεί στην ελληνική μυθολογία δώδεκα κατορθώματα που έκανε ο μυθικός αυτός ήρωας,"
@@ -43,17 +39,17 @@ public class Hercules {
 	// 1η Ερώτηση: answer η απάντηση που θα δώσει ο χρήστης. Έπειτα αυτό επιστρέφει
 	// ως το "answer_given"
 
-	private static int fatherOfHercules() throws NoSuchAnswer {
+	private static int fatherOfHercules() {
 		checkpoint++;
 		System.out.println("\nΠοιός ήταν ο πατέρας του Ηρακλή;" 
 						+ "\n 1)Δίας." 
 						+ "\n 2)Αμφιτρύωνας.");
-		takeAnAnswer(2);
+		Quiz.takeAnAnswer(2);
 		
 		return answer;
 	}
 
-	private static void jealousyOfHera(int answer_given) throws NoSuchAnswer {
+	private static void jealousyOfHera(int answer_given) {
 		checkpoint++;
 
 		if (answer_given == 1) {
@@ -67,12 +63,12 @@ public class Hercules {
 			System.out.println("\nΗ Ήρα, η γυναίκα του Δία, τον ζήλευε όταν γεννήθηκε ο Ηρακλής και αν ναι πως αντέδρασε;"
 							+ "\n 1)Ναι." 
 							+ "\n 2)Όχι.");
-			takeAnAnswer(2);
+			Quiz.takeAnAnswer(2);
 
 			if (answer == 1) {
 				System.out.println("\n 1)Η Ήρα έστειλε φίδια για να σκοτώσουν τον Ηρακλή."
 								+ "\n 2)Η Ήρα πήγε η ίδια να σκοτώσει τον Ηρακλή.");
-				takeAnAnswer(2);
+				Quiz.takeAnAnswer(2);
 
 				if (answer == 1) {
 					System.out.println("\nΗ Ήρα η οποία ζήλευε θανάσιμα τον Δία για τις απιστίες του προκειμένου να τον εκδικηθεί"
@@ -81,7 +77,7 @@ public class Hercules {
 				} else if (answer == 2) {
 					System.out.println("\n 1)Η Ήρα απέτυχε και δεν σταμάτησε να αναζητεί τρόπο εκδίκησης."
 									+ "\n 2)Η Ήρα πέτυχε τον στόχο της και ο Ηρακλής πέθανε.");
-					takeAnAnswer(2);
+					Quiz.takeAnAnswer(2);
 					
 					if (answer == 1) {
 						System.out.println("\nΗ Ήρα μετά από κάποια χρόνια κατάφερε να βρει τρόπο να σκοτώσει τον Ηρακλή,"
@@ -111,7 +107,7 @@ public class Hercules {
 		
 	}
 
-	private static void roadChoosing() throws NoSuchAnswer {
+	private static void roadChoosing() {
 		checkpoint++;
 		System.out.println("\nΟ μύθος που σώθηκε από τον Ξενοφώντα, μας διηγείται το περιστατικό εκείνο, όταν ο Ηρακλής καθισμένος σε κάποιο σταυροδρόμι,"
 						+ "\nείδε να περνούν από μπροστά του δύο πανέμορφες κοπέλες. Η μια του έδειξε έναν εύκολο δρόμο, φαρδύ και ίσιο, που αν τον ακολουθούσε,"
@@ -122,7 +118,7 @@ public class Hercules {
 		System.out.println("\nΠοιόν δρόμο τελικά επέλεξε ο Ηρακλής;" 
 						+ "\n 1)Της Αρετής." 
 						+ "\n 2)Της Κακίας.");
-		takeAnAnswer(2);
+		Quiz.takeAnAnswer(2);
 		
 		if (answer == 1) {
 			System.out.println("\nΟ Ηρακλής ακολούθησε την Αρετή, προτιμώντας να υποφέρει για να διαβεί το δύσβατο δρόμο της, αλλά να γνωρίσει τη δόξα και την τιμή"
@@ -136,7 +132,7 @@ public class Hercules {
 			System.out.println("\nΠως συνέχισε ο Ηρακλής την ζωή του;"
 					+ "\n 1)Άρχισε να αναπολεί το παρελθόν του και μετάνιωσε για ότι έκανε με παρακίνηση της Ήρας."
 					+ "\n 2)Συνέχισε με την ανέμελη ζωή του.");
-			takeAnAnswer(2);
+			Quiz.takeAnAnswer(2);
 
 			if (answer == 1) {
 				System.out.println("\nΠροσπάθησε να βρει έναν τρόπο για να διορθώσει ότι είχε κάνει.");
@@ -148,16 +144,16 @@ public class Hercules {
 			} 
 
 		}
-
+		
 		
 	}
 
-	private static void howHeDealt() throws NoSuchAnswer {
+	private static void howHeDealt() {
 		checkpoint++;
 		System.out.println("\nΠως έπραξε ο Ηρακλής όταν συνειδητοποίησε τι έκανε;"
 						+ "\n 1)Πήγε στο μαντείο των Δελφών για να μάθει πως μπορούσε να επανορθώσει."
 						+ "\n 2)Αυτοκτόνησε από την θλίψη του.");
-		takeAnAnswer(2);
+		Quiz.takeAnAnswer(2);
 
 		if (answer == 1) {
 			System.out.println("\nΌταν συνειδητοποίησε τι έκανε, αποφάσισε να πάει στο Μαντείο των Δελφών για να πάρει χρησμό, ώστε να μάθει με ποιον τρόπο"
@@ -168,15 +164,11 @@ public class Hercules {
 			System.out.println("\nΟι τύψεις που τον έπνιγαν τον οδήγησα να αυτοκτονήσει από την θλίψη του και έτσι πέθανε νωρίς στην ιστορία.");
 			reset();
 
-		} else {
-			throw new NoSuchAnswer();
 		}
-
-		
 
 	}
 
-	private static void killingHydra() throws NoSuchAnswer {
+	private static void killingHydra() {
 		checkpoint++;
 		// System.out.println("Αφήγηση σχετικά με την Λερναία Ύδρα.");
 		System.out.println("\nΤο δεύτερο κατόρθωμά του Ηρακλή είχε να κάνει με την Λερναία Ύδρα, ενός φιδιού με εννέα κεφάλια που ζούσε στη λίμνη Λέρνη και"
@@ -187,7 +179,7 @@ public class Hercules {
 				+ "\n 1)Καθώς έκοβε το κεφάλι, έκαβε ταυτόχρονα και τις πληγές"
 				+ "\n 2)Προσπάθησε να καρφώσει την καρδία της Λερναίας Ύδρας."
 				+ "\n 3)Δεν προσπάθησε και απλώς έτρεξε να ξεφύγει");
-		takeAnAnswer(3);
+		Quiz.takeAnAnswer(3);
 
 		if (answer == 1) {
 			System.out.println("\nΑφού στη θέση κάθε κεφαλιού που έκοβε ο Ηρακλής ξεπετιόνταν άλλα δύο,"
@@ -203,7 +195,7 @@ public class Hercules {
 			System.out.println("\nΤι έκανε μετά;" 
 							+ "\n 1)Σταμάτησε να τρέχει και ξανά σκέφτηκε τον τρόπο αντιμετώπισης."
 							+ "\n 2)Συνέχισε να τρέχει μέχρι που γύρισε τον Ευρυσθέα.");
-			takeAnAnswer(2);
+			Quiz.takeAnAnswer(2);
 
 			if (answer == 1) {
 				System.out.println("\nΟ Ηρακλής προσπαθεί ξανά να βρει κάποιον τρόπο να εξοντώσει την Λερναία Ύδρα.");
@@ -213,7 +205,7 @@ public class Hercules {
 				System.out.println("\nΠως έπραξε ο Ηρακλής μετά από αυτήν την υπενθύμιση;"
 								+ "\n 1)Γύρισε πίσω στην Λερναία Ύδρα για να την αντιμετωπίσει."
 								+ "\n 2)Αυτοκτόνησε από την θλίψη του.\n");
-				takeAnAnswer(2);
+				Quiz.takeAnAnswer(2);
 
 				if (answer == 1) {
 					System.out.println("\nΗ ιστορία με την Λερναία Ύδρα αρχίζει και πάλι");
@@ -223,15 +215,12 @@ public class Hercules {
 					reset();
 
 				}
-
 			}
-
 		}
-		
-		
+
 	}
 
-	private static void pathDigging() throws NoSuchAnswer {
+	private static void pathDigging() {
 		checkpoint++;
 		System.out.println("\nΈνας άλλος άθλος του Ηρακλή ήταν να καθαρίσει τους στάβλους του Αυγεία,"
 				+ "\nτου πλούσιου βασιλιά με τα 3.000 βόδια, που από την κοπριά που είχε μαζευτεί εκεί από τριάντα χρόνια,"
@@ -241,7 +230,7 @@ public class Hercules {
 						+ "\nώστε να καθαρίσουν οι στάβλοι του Αυγεία;"
 						+ "\n 1)Στα θεμέλια των στάβλων." 
 						+ "\n 2)Μέσα στους ίδιους τους στάβλους.");
-		takeAnAnswer(2);
+		Quiz.takeAnAnswer(2);
 
 		if (answer == 1) {
 			System.out.println("\nΟ Ηρακλής με αυτόν τον τρόπο κατάφερε να κάνει τα νερά να παρασύρουν"
@@ -251,7 +240,7 @@ public class Hercules {
 			System.out.println("\nΤι αποτελέσματα είχε αυτό στους στάβλους και στην περιοχή;"
 							+ "\n 1)Καταστράφηκαν οι στάβλοι εντελώς." 
 							+ "\n 2)Δεν επηρρεάστηκαν καθόλου.");
-			takeAnAnswer(2);
+			Quiz.takeAnAnswer(2);
 
 			if (answer == 1) {
 				System.out.println("\nΈσπασαν οι φράχτες,τα ζώα το έσκασαν και κατέστερψαν την πόλη, με αποτέλεσμα"
@@ -268,14 +257,14 @@ public class Hercules {
 		
 	}
 
-	private static void minotaurFeat() throws NoSuchAnswer {
+	private static void minotaurFeat() {
 		checkpoint++;
 		System.out.println("\nΌσον αφορά τον έβδομο άθλο του Ηρακλή αυτός ήταν να καταφέρει να αιχμαλωτήσει τον ταύρο της Κρήτης"
 						+ "\nή αλλιώς μινώταυρο και να τον πάει ζωντανό στον Ευρυσθέα");
 		System.out.println("\nΜε ποιον τρόπο κατάφερε,λοιπόν, ο Ηρακλής να ολοκληρώσει τον έβδομο άθλο;"
 						+ "\n 1)Χρησιμοποίησε δίχτυ για να τον ακινητοποιήσει και μετά τον κουβάλησε;"
 						+ "\n 2)Προσπάθησε πρώτα να τον δαμάσει;");
-		takeAnAnswer(2);
+		Quiz.takeAnAnswer(2);
 
 		switch (answer) {
 
@@ -286,13 +275,13 @@ public class Hercules {
 			System.out.println("\nΠοιό το αποτέλεσμα;"
 							+ "\n 1)Πέτυχε και υπάκουε τις εντολές του Ηρακλή;" 
 							+ "\n 2)Απέτυχε.");
-			takeAnAnswer(2);
+			Quiz.takeAnAnswer(2);
 
 			if (answer == 1) {
 				System.out.println("\n 1)Πρόσταξε τον Ταύρο να παραδωθεί στον Ευρυσθέα.\n"
 						+ "\n 2)Πρόσταξε το ταύρο να πάει να σκοτώσει τον Ευρυσθέα."
 						+ "\n 3)Πρόσταξε τον ταύρο να τον βοηθήσει να πάρει εκδίκηση από την Ήρα.");
-				takeAnAnswer(3);
+				Quiz.takeAnAnswer(3);
 
 				//System.out.println("Συνειδητοποίησε ότι παρά την δυσκολία των άθλων,\n"
 					//	+ "πρέπει να συνεχίσει ώστε να φτάσει στη λύτρωση.");
@@ -313,10 +302,18 @@ public class Hercules {
 			
 			}
 			break;
+<<<<<<< Updated upstream
 		}	
 	}
 
 	private static void theBelt() throws NoSuchAnswer {
+=======
+		}
+	}
+
+
+	private static void theBelt() {
+>>>>>>> Stashed changes
 		System.out.println("\nΜετά από το κατόρθωμα αυτό του Ηρακλέους, η κόρη του Ευρυσθέα, η Αδμήτη, ζήτησε να της φέρει τη ζώνη της Ιππολύτης,"
 				   +"\nτης βασίλισσας των Αμαζόνων, κι ο Ευρυσθέας διέταξε τον Ηρακλή να εκτελέσει την επιθυμία της κόρης του. Ο Ηρακλής,"
 				   +"\nμετά από πολλές περιπέτειες, βρήκε τον πολεμικό λαό των Αμαζόνων και προσπάθησε να πάρει τη ζώνη της βασίλισσάς τους."
@@ -325,7 +322,7 @@ public class Hercules {
 		System.out.println("\nΤι έκανε εφόσον απέκτησε τη ζώνη;" 
 						+ "\n 1)Tην παρέδωσε στην κόρη του Ευρυσθέα."
 						+ "\n 2)Την πήγε στον Άρη ζητώντας του ως αντάλλαγμα βοήθεια για να εκδικηθεί την Ήρα για το χαμό της οικογένειάς του.");
-		takeAnAnswer(2);
+		Quiz.takeAnAnswer(2);
 		
 		if (answer == 1) {
 			System.out.println("\nΈπειτα συνέχισε με τους υπόλοιπους άθλους του");
@@ -339,14 +336,14 @@ public class Hercules {
 		}
 	}
 
-	private static void dwarfBrothers() throws NoSuchAnswer {
+	private static void dwarfBrothers() {
 		checkpoint++;
 		System.out.println("\nΟι Πυγμαίοι, νάνοι αδελφοί του Ανταίου, επιτέθηκαν για εκδίκηση στον Ηρακλή ενώ αυτός κοιμόταν."
 						+ "\nΤι συνέβη μετά;"
 						+ "\n 1)Λόγω της ασήμαντης επιθεσής τους, ο Ηρακλής τους παγίδευσε στη λεοντή του και τους πήγε στον Ευρυσθέα." 
 						+ "\n 2)Τον έδεσαν με σχοινιά στο έδαφος."
 						+ "\n 3)Κατάφεραν να τον τυφλώσουν και να πάρουν εκδίκηση για τον αδελφό τους.");
-		takeAnAnswer(3);
+		Quiz.takeAnAnswer(3);
 
 		if (answer == 1) {
 			System.out.println("\nΈτσι ο Ηρακλής εκπλήρωσε και αυτόν τον άθλο του");
@@ -355,7 +352,7 @@ public class Hercules {
 			System.out.println("\nΈπειτα τι έγινε;"
 							+ "\n 1)Tα σκοινιά ήταν πολύ μικρά και ο Ηρακλής κατάφερε να σπάσει τα δεσμά του."
 					 		+" \n 2)Ο Ηρακλής δεν κατάφερε να ελευθερωθεί.");
-			takeAnAnswer(2);
+			Quiz.takeAnAnswer(2);
 			
 			if (answer == 1) {
 				System.out.println("\nΈτσι ο Ηρακλής τους παγίδευσε στη λεοντή του και τους πήγε στον Ευρυσθέα.");
@@ -372,7 +369,7 @@ public class Hercules {
 		}	
 	}
 
-	private static void wifeBetrayal() throws NoSuchAnswer {
+	private static void wifeBetrayal() {
 		checkpoint++;
 		System.out.println("\nΟ Ηρακλής σκότωσε τον Νέσσο, ο οποίος προσπάθησε να κλέψει την γυναίκα του με δηλητηριασμένα βέλη.Τη στιγμή που ο Νέσσος πέθαινε"
 				   		+"\nαπό τα δηλητηριασμένα βέλη του Ηρακλή, εκμυστηρεύθηκε στη Δηιάνειρα ότι ο σύζυγός της δεν την αγαπούσε πια, και ότι για να ξανακερδίσει"
@@ -381,7 +378,7 @@ public class Hercules {
 		System.out.println("\nΌταν η Δηιάνειρα πρόσφερε τον χειτώνα στον Ηρακλή, ο Ηρακλής τι έκανε;"
 				+ "\n 1)Ο Ηρακλής φόρεσε τον χιτώνα και από τον έντονο πόνο παρακάλεσε να τον κάψουν."
 				+ "\n 2)Ο Ηρακλής είχε παρατηρήσει ότι η γυναίκα του γέμισε τον χιτώνα με αίμα.");
-		takeAnAnswer(2);
+		Quiz.takeAnAnswer(2);
 
 		if (answer == 1) {
 			//Τίτλοι τέλους
@@ -392,7 +389,7 @@ public class Hercules {
 			System.out.println("\nΠως έπραξε μετά λοιπόν ο ήρωας;"
 							+ "\n 1)Ο Ηρακλής δεν φόρεσε τον χιτώνα και παράτησε τη γυναίκα του."
 							+ "\n 2)Ο Ηρακλής από αντίδραση, φόρεσε τον χιτώνα στη γυναίκα του.");
-			takeAnAnswer(2);
+			Quiz.takeAnAnswer(2);
 			
 			if (answer == 1){
 				//Τίτλοι τέλους
@@ -420,6 +417,7 @@ public class Hercules {
 	private static void reset() {
 		checkpoint--;
 	}
+<<<<<<< Updated upstream
 
 
 
@@ -448,5 +446,7 @@ public class Hercules {
 			}	
 		} while (answer > noOfAnswers || answer<=0);
 	}
+=======
+>>>>>>> Stashed changes
 	
 }
