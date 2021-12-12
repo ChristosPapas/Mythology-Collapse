@@ -301,19 +301,13 @@ public class Hercules {
 				reset();
 			
 			}
-			break;
-<<<<<<< Updated upstream
 		}	
 	}
 
-	private static void theBelt() throws NoSuchAnswer {
-=======
-		}
-	}
+
 
 
 	private static void theBelt() {
->>>>>>> Stashed changes
 		System.out.println("\nΜετά από το κατόρθωμα αυτό του Ηρακλέους, η κόρη του Ευρυσθέα, η Αδμήτη, ζήτησε να της φέρει τη ζώνη της Ιππολύτης,"
 				   +"\nτης βασίλισσας των Αμαζόνων, κι ο Ευρυσθέας διέταξε τον Ηρακλή να εκτελέσει την επιθυμία της κόρης του. Ο Ηρακλής,"
 				   +"\nμετά από πολλές περιπέτειες, βρήκε τον πολεμικό λαό των Αμαζόνων και προσπάθησε να πάρει τη ζώνη της βασίλισσάς τους."
@@ -417,36 +411,5 @@ public class Hercules {
 	private static void reset() {
 		checkpoint--;
 	}
-<<<<<<< Updated upstream
-
-
-
-
-
-	private static void checkAnswer(int noOfAnswers) {
-		boolean continueLoop=true;
-		do {
-			try {
-				answer= in.nextInt();
-				continueLoop=false;
-			}catch(InputMismatchException exception){
-				in.nextLine(); //erases input so that the user can try again without terminating the program
-				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
-			}
-		}while(continueLoop);	
-	}
-
-
-
-	private static void takeAnAnswer(int noOfAnswers) {
-		do {
-			checkAnswer(noOfAnswers);
-			if (answer > noOfAnswers || answer<=0) {					
-				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
-			}	
-		} while (answer > noOfAnswers || answer<=0);
-	}
-=======
->>>>>>> Stashed changes
 	
 }
