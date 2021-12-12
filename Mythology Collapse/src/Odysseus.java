@@ -6,6 +6,7 @@ import java.util.TimerTask;
 	class SetTimerTask extends TimerTask{
 		public void run(){
 		System.out.println("\nΟ Οδυσσέας είναι νεκρός! Η αρρώστια που του δημιούργησε ο λωτός τελικά τον νίκησε, αφού δεν πήρε το αντίδοτο!");
+		Odysseus.backToMenu();
 		}
 	}
 	
@@ -17,17 +18,36 @@ public class Odysseus {
 	private static boolean disease;
 	private static int answer;
 	private static boolean treasure;
-	private static Timer timer= new Timer();
-	private static TimerTask task =new SetTimerTask();
+	private  static Timer timer;
+	private static TimerTask task;
 	private static boolean end;
 	
 	public Odysseus() {
+		initialization();
+	}
+	
+	private static void initialization() {
 		kirki= false;
 		disease=false;
 		treasure=false;
-		end=false;
+		end=false;	
+		timer= new Timer();
+		task =new SetTimerTask();
 		lotofagoi();
 	}
+	
+
+
+	public static void backToMenu() {
+		System.out.println("\nΑν θέλεις να ξαναπαίξεις την πίστα του Οδυσσέα και να αλλάξεις τις αποφάσεις σου, πάτησε 1.\n"
+				+ "Αλλιώς, αν θες να επιστρέψεις στο ΑΡΧΙΚΟ ΜΕΝΟΥ, πάτησε 2.\n");
+		answer = Quiz.takeAnAnswer(2);
+		if(answer==1) {
+		initialization();
+		}
+	}
+
+
 
 
 
@@ -270,6 +290,7 @@ public class Odysseus {
 						System.out.println("Ο Οδυσσέας, παρά την προθυμία της Κίρκης είναι πεπεισμένος ότι την αγαπάει βαθιά και δεν τον νοιάζει να μάθει το λόγο που προσφέρεται να του δείξει το"
 								+ "\nπαρεθόν.Έτσι, αποφασίζει να μείνει μόνιμα μαζί της.");
 						timer.cancel();
+						backToMenu();
 						end=true;
 					}
 		}else {
@@ -285,7 +306,7 @@ public class Odysseus {
 	private static void death() {
 		timer.cancel();
 		System.out.println("Ο Οδυσσέας είναι πλέον νεκρός!Δυστυχώς δεν κατάφερε να ζήσει το 'HAPPY ENDING' των ιστοριών...\n\n");		
-		
+		backToMenu();
 	}
 	
 
@@ -308,6 +329,7 @@ public class Odysseus {
 						+ "\nκαταφέρει μέχρι τότε. Αμέσως, πετάει τα κουρέλια που φοράει και αποκαλύπτει ποιος είναι. Ξεκινάει ένα ανθρωποκυνηγητό με τον Οδυσσέα και"
 						+ "\n το γιο του, Τηλέμαχο, να κυνηγάνε τους μνηστήρες και εκείνοι να τρέχου για τη ζωή τους.\n"
 						+ "Τελικά, ο Οδυσσέας έχει πλέον καταφέρει μετά τα πολύχρονα βάσανά του να κερδίσει ξανά τη θέση του στο παλάτι και στην οικογένειά του.");
+				backToMenu();
 			} else {
 				System.out.println("Χωρίς τη βοήθεια της Αθηνάς, ο Οδυσσέας αναγνωρίζεται αμέσως από τους μνηστήρες και ανήμπορος ως ήταν, χώρις όπλα για να πολεμήσει,"
 						+ "\n θανατώνεται τελικά από τους φιλόδοξους κατακτητές του θρόνου του...\n");
@@ -406,6 +428,7 @@ public class Odysseus {
 			if (answer == 2) {
 				System.out.println("Η καρτερικότητα και η αγάπη της Καλυψώς κατά την παραμονή του στο νησί, μάγεψε τελικά τον Οδυσσέα.\n"
 						+ "Η πατρίδα και η οικογένειά του αποτελούσαν πλέον ένα πεθαμένο όνειρο για εκέινον, που αποφάσισε να περάσει την υπόλοιπη ζωή του με την κοπέλα που τον έσωσε.");
+				backToMenu();
 			} else {
 				System.out.println("Η Αθηνά, βλέποντας τον Οδυσσέα επι 7 χρόνια να νοσταλγεί την πολυαγαπημένη του πατρίδα , πείθει την Καλυψώ να του επιτρέψει να πάρει τον δρόμο της επιστροφής."
 						+ "\nΈτσι, ο ήρωας παίρνει για ακόμη μια φορά, με την βοήθεια των θεών, το δρόμο για την πολυπόθητη πατρίδα...\n\n");

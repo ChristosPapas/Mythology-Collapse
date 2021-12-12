@@ -15,7 +15,7 @@ public class Quiz {
 	
 	public static int takeAnAnswer(int noOfAnswers) {
 		do {
-			checkAnswer(noOfAnswers);
+			checkAnswer(noOfAnswers); 
 			if (answer > noOfAnswers || answer<=0) {					
 				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
 			}	
