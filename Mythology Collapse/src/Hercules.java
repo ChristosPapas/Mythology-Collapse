@@ -411,5 +411,4 @@ public class Hercules {
 	private static void reset() {
 		checkpoint--;
 	}
-	
 }
