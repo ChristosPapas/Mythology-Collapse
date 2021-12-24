@@ -520,8 +520,6 @@ public class Hercules {
 	private static void reset() {
 		checkpoint--;
 	}
-<<<<<<< Updated upstream
-=======
 
 	private static void endingTitles() {
 		System.out.println("\nΜε αυτόν τον τρόπο και μετά από πολλά χρόνια τελείωσε η ζωή του μυθικού"
@@ -530,5 +528,4 @@ public class Hercules {
 						+ "\n		THE END");
 		System.out.println("Επιμέλεια και Παραγωγή:....");
 	}
->>>>>>> Stashed changes
 }
