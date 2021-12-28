@@ -1,4 +1,3 @@
-package mythologyCollapse;
 
 import java.util.InputMismatchException;
 import java.util.Random;
