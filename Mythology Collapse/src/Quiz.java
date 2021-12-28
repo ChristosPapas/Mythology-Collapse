@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 //	Class Quiz displays random questions out of 20  and checks the correctness of the answer given 
 public class Quiz {
 	private static int counter=0;
