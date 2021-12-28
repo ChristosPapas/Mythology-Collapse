@@ -13,25 +13,36 @@ public class Hercules {
 				
 		while (checkpoint != 10) {
 			if (checkpoint == 1) {
+				assert checkpoint == 1 : "Wrong checkpoint";
 				answer_given = fatherOfHercules();
 			} else if (checkpoint == 2) {
+				assert checkpoint == 2 : "Wrong checkpoint";
 				jealousyOfHera(answer_given);
 			} else if (checkpoint == 3) {
+				assert checkpoint == 3 : "Wrong checkpoint";
 				roadChoosing();
 			} else if (checkpoint == 4) {
+				assert checkpoint == 4 : "Wrong checkpoint";
 				howHeDealt();
 			} else if (checkpoint == 5) {
+				assert checkpoint == 5 : "Wrong checkpoint";
 				killingHydra();
 			} else if (checkpoint == 6) {
+				assert checkpoint == 6 : "Wrong checkpoint";
+				assert k == true : "Wrong boolean";
 				k=true;
 				pathDigging();
 			} else if (checkpoint == 7) {
+				assert checkpoint == 7 : "Wrong checkpoint";
 				minotaurFeat();
 			} else if (checkpoint == 8) {
+				assert checkpoint == 8 : "Wrong checkpoint";
 				theBelt();
 			} else if (checkpoint == 9) {
+				assert checkpoint == 9 : "Wrong checkpoint";
 				dwarfBrothers();
 			} else if (checkpoint == 10) {
+				assert checkpoint == 10 : "Wrong checkpoint";
 				wifeBetrayal();
 			}
 		}
@@ -42,6 +53,7 @@ public class Hercules {
 	// ως το "answer_given"
 
 	private static int fatherOfHercules() {
+		assert checkpoint == 1 : "Wrong checkpoint";
 		checkpoint++;
 		System.out.println("\nΠοιός ήταν ο πατέρας του Ηρακλή;" 
 						+ "\n 1)Δίας." 
@@ -52,6 +64,7 @@ public class Hercules {
 	}
 
 	private static void jealousyOfHera(int answer_given) {
+		assert checkpoint == 2 : "Wrong checkpoint";
 		checkpoint++;
 
 		if (answer_given == 1) {
@@ -111,6 +124,7 @@ public class Hercules {
 	}
 
 	private static void roadChoosing() {
+		assert checkpoint == 3 : "Wrong checkpoint";
 		checkpoint++;
 		System.out.println("\nΟ μύθος που σώθηκε από τον Ξενοφώντα, μας διηγείται το περιστατικό εκείνο, όταν ο Ηρακλής καθισμένος σε κάποιο σταυροδρόμι,"
 						+ "\nείδε να περνούν από μπροστά του δύο πανέμορφες κοπέλες. Η μια του έδειξε έναν εύκολο δρόμο, φαρδύ και ίσιο, που αν τον ακολουθούσε,"
@@ -152,6 +166,7 @@ public class Hercules {
 	}
 
 	private static void howHeDealt() {
+		assert checkpoint == 4 : "Wrong checkpoint";
 		checkpoint++;
 		System.out.println("\nΠως έπραξε ο Ηρακλής όταν συνειδητοποίησε τι έκανε;"
 						+ "\n 1)Πήγε στο μαντείο των Δελφών για να μάθει πως μπορούσε να επανορθώσει."
@@ -172,6 +187,7 @@ public class Hercules {
 	}
 
 	private static void killingHydra() {
+		assert checkpoint == 5 : "Wrong checkpoint";
 		checkpoint++;
 		// System.out.println("Αφήγηση σχετικά με την Λερναία Ύδρα.");
 		System.out.println("\nΤο δεύτερο κατόρθωμά του Ηρακλή είχε να κάνει με την Λερναία Ύδρα, ενός φιδιού με εννέα κεφάλια που ζούσε στη λίμνη Λέρνη και"
@@ -224,6 +240,7 @@ public class Hercules {
 	}
 
 	private static void pathDigging() {
+		assert checkpoint == 6 : "Wrong checkpoint";
 		checkpoint++;
 		System.out.println("\nΈνας άλλος άθλος του Ηρακλή ήταν να καθαρίσει τους στάβλους του Αυγεία,"
 				+ "\nτου πλούσιου βασιλιά με τα 3.000 βόδια, που από την κοπριά που είχε μαζευτεί εκεί από τριάντα χρόνια,"
@@ -262,6 +279,7 @@ public class Hercules {
 	}
 
 	private static void minotaurFeat() {
+		assert checkpoint == 7 : "Wrong checkpoint";
 		checkpoint++;
 		if (k) {
 			System.out.println("\nΌσον αφορά τον έβδομο άθλο του Ηρακλή, αυτός ήταν να καταφέρει να αιχμαλωτήσει τον ταύρο της Κρήτης"
@@ -313,6 +331,7 @@ public class Hercules {
 	}
 
 	private static void theBelt() {
+		assert checkpoint == 8 : "Wrong checkpoint";
 		System.out.println("\nΜετά από το κατόρθωμα αυτό του Ηρακλέους, η κόρη του Ευρυσθέα, η Αδμήτη, ζήτησε να της φέρει τη ζώνη της Ιππολύτης,"
 				   +"\nτης βασίλισσας των Αμαζόνων, κι ο Ευρυσθέας διέταξε τον Ηρακλή να εκτελέσει την επιθυμία της κόρης του. Ο Ηρακλής,"
 				   +"\nμετά από πολλές περιπέτειες, βρήκε τον πολεμικό λαό των Αμαζόνων και προσπάθησε να πάρει τη ζώνη της βασίλισσάς τους."
@@ -336,6 +355,7 @@ public class Hercules {
 	}
 
 	private static void dwarfBrothers() {
+		assert checkpoint == 9 : "Wrong checkpoint";
 		checkpoint++;
 		System.out.println("\nΟι Πυγμαίοι, νάνοι αδελφοί του Ανταίου, επιτέθηκαν για εκδίκηση στον Ηρακλή ενώ αυτός κοιμόταν."
 						+ "\nΤι συνέβη μετά;"
@@ -369,6 +389,7 @@ public class Hercules {
 	}
 
 	private static void wifeBetrayal() {
+		assert checkpoint == 10 : "Wrong checkpoint";
 		checkpoint++;
 		System.out.println("\nΟ Ηρακλής σκότωσε τον Νέσσο, ο οποίος προσπάθησε να κλέψει την γυναίκα του με δηλητηριασμένα βέλη.Τη στιγμή που ο Νέσσος πέθαινε"
 				   		+"\nαπό τα δηλητηριασμένα βέλη του Ηρακλή, εκμυστηρεύθηκε στη Δηιάνειρα ότι ο σύζυγός της δεν την αγαπούσε πια, και ότι για να ξανακερδίσει"
