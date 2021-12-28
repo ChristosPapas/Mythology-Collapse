@@ -5,17 +5,23 @@ import java.util.Random;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+//	Class Quiz displays random questions out of 20  and checks the correctness of the answer given 
 public class Quiz {
 	private static int counter=0;
 	private static Random rand = new Random();
+	//	Table availableQuestions declares that none of the questions has been displayed yet
 	private static boolean [] availableQuestions = {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
 	public static int answerQuiz;
 	private static Scanner input= new Scanner(System.in);
 	private static int answer;
 	
+	//	Check if the answer given by the player is within appropriate bounds depending on number of answers and variable type 
+	//	and then returns the answer.
 	public static int takeAnAnswer(int noOfAnswers) {
 		do {
+			//	check correctiveness of type
 			checkAnswer(noOfAnswers); 
+			//	ensure the answer number is within bounds
 			if (answer > noOfAnswers || answer<=0) {					
 				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
 			}	
@@ -24,7 +30,7 @@ public class Quiz {
 	}
 		
 	
-	
+	//	Check the type of variable through an exception handling 
 	private static void  checkAnswer(int noOfAnswers) {
 		boolean continueLoop=true;
 		do {
@@ -32,18 +38,19 @@ public class Quiz {
 				answer= input.nextInt();
 				continueLoop=false;
 			}catch(InputMismatchException exception){
-				input.nextLine(); //erases input so that the user can try again without terminating the program
+				input.nextLine(); //	erases input so that the user can try again without terminating the program
 				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
 			}
 		}while(continueLoop);	
 	}
 	
 	
-	
+	//	chooses a non displayed question and returns true when the answer is correct or false otherwise
 	public  boolean questionPicker() {
 		boolean result;
-		availabilityCheckRestore();
-		int question = checkAvailability();
+		availabilityCheckRestore();	//	Check the availability of non displayed questions and if it is 0, the table is being restored
+		int question = checkAvailability();	//	Choose randomly a non displayed question
+		//	Print question and return the correctiveness of the answer
 		switch (question) {
 			case 1:
 				 result = question1();
@@ -106,21 +113,21 @@ public class Quiz {
 				result = question20();
 				break;
 		}
-		counter++;
+		counter++;	//	counts how many questions have been displayed
 		return result; //returns a boolean value depending on whether the player has answered the question true or false
 	}
 	
-	
+	//	Choose randomly a question among the 20 given, checking to have not been displayed and return the number of question
 	private  int checkAvailability(){
 		int q;
 		do{
 			q = rand.nextInt(20) + 1;	
 		}while(availableQuestions[q-1] == false);
-		availableQuestions[q-1] = true;
+		availableQuestions[q-1] = true;	//	when the question is used its cell in table takes the 'false' value
 		return q;
 	}
 	
-	
+	//	Display  the corresponding question and read the answer from the player. Also returns the result of the answer.
 	
 	private  boolean  question1() {
 		System.out.println("Τι εννοούμε με τη φράση δούρειος ίππος;");
@@ -322,7 +329,7 @@ public class Quiz {
 		return questionResult(3);
 	}
 
-
+	//	Print messages for the correctiveness (or not) and returns the result of the question
 	private  boolean questionResult(int correct) { 
 		 if (answerQuiz == correct) {
 			System.out.println("Σωστή απάντηση!");
@@ -334,8 +341,8 @@ public class Quiz {
 	}
 	
 	
-	
-	private static void availabilityCheckRestore() { //checks for available number of questions and if not one then restores availability
+	//checks for available number of questions and if not one then restores availability
+	private static void availabilityCheckRestore() { 
 		if (counter == 20) {
 			for (int i=0; i<availableQuestions.length;i++) {
 				availableQuestions[i] = true;
