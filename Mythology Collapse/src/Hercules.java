@@ -4,11 +4,8 @@ public class Hercules {
 	private static boolean k = true, father_zeus = true;
 
 /*****************************************************
- * Ο Ηρακλής είναι ο μυθικός ήρωας, κομμάτι του "Mythology Collapse".
- * Στην αρχή περιέχεται η εκφώνηση και ο έλεγχος των checkpoint
- * έτσι ώστε να τρέχει η σωστή μέθοδος.
- * Κάθε μέθοδος είναι μία διαφορετική ερώτηση για τον παίχτη,
- * ένα διαφορετικό κομμάτι του παιχνιδιού.
+ * Beginning of story of Hercules. Checking the checkpoint
+ * and running the corresponding story part.
  *****************************************************/
 	public Hercules() {
 		System.out.println("\nΤο ακόλουθο παιχνίδι θα βασιστεί πάνω σε ερωτήσεις σχετικά με τη ζωή του ήρωα και τους άθλους που διέπραξε.");
@@ -57,14 +54,18 @@ public class Hercules {
 	}
 
 	/*****************************************************
-	 * fatherOfHercules() είναι η το 1ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το 1ο ερώτημα.
-	 * Εδώ ο χρήστης έρχεται στην θέση να απαντήσει στο ποιος
-	 * ήταν ο πατέρας του Ηρακλή.
+	 * The first story part about Hercules father.
+	 * Returns the player's answer.
 	 *****************************************************/
 
 	private static int fatherOfHercules() {
 		assert checkpoint == 1 : "Wrong checkpoint";
+		
+		/*****************************************************
+		 * checkpoint is getting increased as the first method
+		 * is ran.
+		 *****************************************************/
+		
 		checkpoint++;
 		System.out.println("\nΠοιός ήταν ο πατέρας του Ηρακλή;" 
 						+ "\n 1)Δίας." 
@@ -75,19 +76,22 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * jealousyOfHera() είναι η το 2ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το 2ο ερώτημα.
-	 * Εδώ ανάλογα με την προηγούμενη απάντηση του συνεχίζει
-	 * σε διαφορετικό κομμάτι της ιστορίας, είτε με τον
-	 * πατέρα του ως τον Δία ή τον Αμφιτρύωνα.
-	 * Έπειτα πρέπει να απαντήσει στις επόμενες ερωτήσεις.
+	 * The second story part about the jealousy of Hera.
+	 * Checks the previous given answer and continuous
+	 * the story accordingly.
 	 *****************************************************/
 	
 	private static void jealousyOfHera(int answer_given) {
-		assert checkpoint == 2 : "Wrong checkpoint";
+		assert checkpoint == 2 : "Wrong checkpoint";		
 		checkpoint++;
 		assert (answer_given == 1 || answer_given == 2) : "wrong answer_given";
 		if (answer_given == 1) {
+			
+			/*****************************************************
+			 * "k" is a boolean where it checks if the "print"
+			 * has already been printed before.
+			 *****************************************************/
+			
 			if (k) {
 				System.out.println("\nΣύμφωνα με τη μυθολογία αυτή είναι η σωστή απάντηση παρότι η Αλκμήνη,"
 								+ "\nμητέρα του Ηρακλή, ήταν παντρεμένη με τον Αμφιτρύωνα,"
@@ -144,10 +148,10 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * roadChoosing() είναι η το 3ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το 3ο ερώτημα.
-	 * Εδώ ο παίχτης επιλέγει τον δρόμο που θα προχωρήσει
-	 * ο Ηρακλής, της Κακίας ή της Αρετής.
+	 * The third story part about Hercules having to choose
+	 * which road he is going to take.
+	 * It changes the overall story depending on the path
+	 * he takes.
 	 *****************************************************/
 
 	private static void roadChoosing() {
@@ -193,10 +197,8 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * howHeDealt() είναι η το 4ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το 4ο ερώτημα.
-	 * Ο παίχτης πρέπει να επιλέξεις πως αντέδρασε ο
-	 * Ηρακλής μετά της δολοφωνίας της οικογένειάς του.
+	 * The fourth story part about Hercules realizing his
+	 * actions (killing his family).
 	 *****************************************************/
 
 	private static void howHeDealt() {
@@ -221,10 +223,8 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * killingHydra() είναι η το 5ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το 5ο ερώτημα.
-	 * Ο παίχτης πρέπει να βρει τον τρόπο με τον οποίο
-	 * ο Ηρακλής κατάφερε να κατατροπώσει την Ύδρα.
+	 * The fifth story part where the story as we know it
+	 * really begins.
 	 *****************************************************/
 
 	private static void killingHydra() {
@@ -281,11 +281,9 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * pathDigging() είναι η το 6ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το 6ο ερώτημα.
-	 * Αυτό το κομμάτι της ιστορίας αφορά τους στάυλους του
-	 * Αυγεία, στους οποίους ο Ηρακλής έπρεπε να φτιάξει
-	 * μονοπάτι για να καθαρίσουν από την κοπριά.
+	 * The sixth story part about Hercules having to decide
+	 * where he will dig the path that the water will pass
+	 * through.
 	 *****************************************************/
 
 	private static void pathDigging() {
@@ -328,11 +326,8 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * minotaurFeat() είναι η το 7ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το 7ο ερώτημα.
-	 * Σύμφωνα με την μυθολογία ο Ηρακλής έπρεπε να παραδώσει
-	 * τον μινόταυρο στον Ευρυσθέα. Δίνονται διαφορετικές
-	 * επιλογές για τον τρόπο που τα κατάφερε.
+	 * The seventh story part where Hercules had to capture
+	 * the minotaur.
 	 *****************************************************/
 
 	private static void minotaurFeat() {
@@ -388,11 +383,8 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * theBelt() είναι η το 7ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το 7ο ερώτημα.
-	 * Η κόρη του Ευρυσθέα ζήτησε από τον Ηρακλή να πάρει
-	 * την ζώνη της Ιπολλύτης. Αυτό είναι και το θέμα
-	 * αυτής της μεθόδου.
+	 * The eighth story part that Hercules gets the Belt
+	 * for Eurystheas' daughter.
 	 *****************************************************/
 
 	private static void theBelt() {
@@ -420,10 +412,8 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * dwarfBrothers() είναι η το 9ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το 9ο ερώτημα.
-	 * Εδώ ζητείται από τον παίχτη να απαντήσει στο πως
-	 * έπραξε ο Ηρακλής στην επίθεση των Πυγμαίων.
+	 * The ninth story part that talks about Antaios' brothers
+	 * who tried to kill Hercules.
 	 *****************************************************/
 
 	private static void dwarfBrothers() {
@@ -461,12 +451,8 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * wifeBetrayal() είναι η το 10ο κομμάτι της ιστορίας,
-	 * ή διαφορετικά η το τελευταίο ερώτημα.
-	 * Στην λήξη του Ήρωα αλλά και την λήξη του παιχνιδιού
-	 * δίνεται το τελευταίο κομμάτι της ιστορίας, στο οποίο
-	 * αφορά την προδοσία της γυναίκας του και το πως πέθανε
-	 * ο ήρωας.
+	 * The tenth and last story part in which Hercules
+	 * wife betrays him wanting or not.
 	 *****************************************************/
 
 	private static void wifeBetrayal() {
@@ -507,13 +493,9 @@ public class Hercules {
 	}
 	
 	/*****************************************************
-	 * ordinaryPerson() αυτή είναι η ιστορία αντίστοιχη
-	 * με την κεντρική στην οποία ο πραγματικός πατέρας
-	 * του Ηρακλή ήταν ο Αμφιτρύωνας, άρα δεν είχε τις
-	 * δυνάμεις ενός ημίθεου. Όμως παράλληλα μπλέκεται
-	 * και το κεντρικό κομμάτι της ιστορίας στο οποίο ο
-	 * Ηρακλής παράτησε τον σκοπό του για λύτρωση και
-	 * κυνήγησε την φυσιολογική ζωή.
+	 * ordinaryPerson is a story that Hercules is displayed
+	 * either as a common mortal or he has forgotten the
+	 * reason he is doing the feats.
 	 *****************************************************/
 
 	private static void ordinaryPerson() {
@@ -629,7 +611,20 @@ public class Hercules {
 		}
 	}
 	
+	/*****************************************************
+	 * reset is a method in which the story is getting
+	 * reseted as Hercules has died or something close to
+	 * that.
+	 *****************************************************/
+	
 	private static void reset() {
+		
+		/*****************************************************
+		 * The checkpoint is getting set 2 positions back so
+		 * the player has another chance to continuing the
+		 * story.
+		 *****************************************************/
+		
 		checkpoint--;
 	}
 
