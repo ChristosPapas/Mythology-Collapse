@@ -36,13 +36,14 @@ public class Quiz {
 	private static void  checkAnswer(int noOfAnswers) {
 		boolean continueLoop=true;
 		String s1 = null;
+		String ans;
 		do {
 			try {
-				panel.getMessage(); //take the player's answer as a String value
+				ans = panel.getMessage(); //take the player's answer as a String value
 				int i;	
 				boolean check = false;
-				while(i <= noOfAnswers || check = true){
-					if (answer.equals(i.toString())){
+				while(i <= noOfAnswers || check == true){
+					if (ans.equals(i.toString())){
 					check = true;	// when check becomes true we have found an integer value from 1 to noOfAnswers 
 					}
 				}	
