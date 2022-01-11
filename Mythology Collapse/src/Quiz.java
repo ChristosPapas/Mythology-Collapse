@@ -43,7 +43,7 @@ public class Quiz {
 				boolean check = false;
 				while(i <= noOfAnswers || check = true){
 					if (answer.equals(i.(toString))){
-					check = true;	// when ckeck becomes true we have found an integer value from 1 to noOfAnswers 
+					check = true;	// when check becomes true we have found an integer value from 1 to noOfAnswers 
 					}
 				}	
 				continueLoop=false;
