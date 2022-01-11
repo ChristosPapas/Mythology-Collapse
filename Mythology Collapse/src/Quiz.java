@@ -38,14 +38,21 @@ public class Quiz {
 		String s1 = null;
 		do {
 			try {
-				answer= input.nextInt();
+				panel.getMessage(); //take the player's answer as a String value
+				int i;	
+				boolean check = false;
+				while(i <= noOfAnswers || check = true){
+					if (answer.equals(i.(toString))){
+					check = true;	// when ckeck becomes true we have found an integer value from 1 to noOfAnswers 
+					}
+				}	
 				continueLoop=false;
 			}catch(InputMismatchException exception){
-				panel.getMessage(); //	erases input so that the user can try again without terminating the program
 				s1 = String.valueOf(System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers));
 				panel.setMessage(s1);
 			}
-		}while(continueLoop);
+		}while(continueLoop);	
+		answer = integer.parseInt(i);	//convert i value which contains the number of answer into an integer value
 	}
 	
 	
