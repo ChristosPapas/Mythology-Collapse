@@ -6,7 +6,7 @@ import java.util.TimerTask;
 	//	when the Timer stops the player is dead
 	class SetTimerTask extends TimerTask{
 		public void run(){
-		System.out.println("\nΟ Οδυσσέας είναι νεκρός! Η αρρώστια που του δημιούργησε ο λωτός τελικά τον νίκησε, αφού δεν πήρε το αντίδοτο!");
+		panel.setMessage("\nΟ Οδυσσέας είναι νεκρός! Η αρρώστια που του δημιούργησε ο λωτός τελικά τον νίκησε, αφού δεν πήρε το αντίδοτο!");
 		Odysseus.backToMenu();
 		}
 	}
