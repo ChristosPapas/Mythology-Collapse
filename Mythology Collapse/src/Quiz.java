@@ -34,26 +34,28 @@ public class Quiz {
 	
 	//	Check the type of variable through an exception handling 
 	private static void  checkAnswer(int noOfAnswers) {
-		boolean continueLoop=true;
 		String s1 = null;
 		String ans;
-		int i = 0;
-		do {
+		int i;
+		boolean check;
+		do {	
+			i = 0 ;
+			check = false;
 			try {
 				ans = panel.getMessage(); //take the player's answer as a String value
-				boolean check = false;
+				
 				while(i < noOfAnswers && check == false){
 					i++;
 					if (ans.equals(Integer.toString(i))){
 					check = true;	// when check becomes true we have found an integer value from 1 to noOfAnswers 
 					}
 				}	
-				continueLoop=false;
+
 			}catch(InputMismatchException exception){
 				s1 = String.valueOf(System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers));
 				panel.setMessage(s1);
 			}
-		}while(continueLoop);	
+		}while(ckeck == false);	
 		answer = i;	//convert i value which contains the number of answer into an integer value
 	}
 	
