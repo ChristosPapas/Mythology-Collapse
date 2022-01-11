@@ -41,7 +41,7 @@ public class Quiz {
 				answer= input.nextInt();
 				continueLoop=false;
 			}catch(InputMismatchException exception){
-				input.nextLine(); //	erases input so that the user can try again without terminating the program
+				panel.getMessage(); //	erases input so that the user can try again without terminating the program
 				s1 = String.valueOf(System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers));
 				panel.setMessage(s1);
 			}
