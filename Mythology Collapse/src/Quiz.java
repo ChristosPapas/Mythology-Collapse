@@ -42,7 +42,7 @@ public class Quiz {
 			try {
 				ans = panel.getMessage(); //take the player's answer as a String value
 				boolean check = false;
-				while(i <= noOfAnswers || check == true){
+				while(i <= noOfAnswers && check == false){
 					if (ans.equals(Integer.toString(i))){
 					check = true;	// when check becomes true we have found an integer value from 1 to noOfAnswers 
 					}
