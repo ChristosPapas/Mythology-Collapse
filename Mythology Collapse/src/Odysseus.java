@@ -110,7 +110,8 @@ public class Odysseus {
 
 	//	provides a clue to the player so that he understands the hero is ill and has to rush
 	private static void help() {
-		System.out.printf("\n\n%5s\n%10s","Ο Οδυσσέας βρίσκεται σε κίνδυνο!!!!","Αν θες να τον σώσεις απάντησε σωστά στην παρακάτω ερώτηση.\n\n");
+		String s = String.valueOf(System.out.printf("\n\n%5s\n%10s","Ο Οδυσσέας βρίσκεται σε κίνδυνο!!!!","Αν θες να τον σώσεις απάντησε σωστά στην παρακάτω ερώτηση.\n\n"));
+		panel.getMessage(s)
 		panel.getMessage("Θα βοηθήσεις τον ήρωα να επιβιώσει;\nΑπάντησε:\n1. ΝΑΙ\n2. ΟΧΙ\n");
 		answer = Quiz.takeAnAnswer(2);
 		//	the player wants to take the clue
