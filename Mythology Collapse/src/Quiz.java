@@ -44,7 +44,7 @@ public class Quiz {
 				
 				boolean check = false;
 				while(i <= noOfAnswers || check == true){
-					if (ans.equals(i.toString())){
+					if (ans.equals(Integer.toString(i))){
 					check = true;	// when check becomes true we have found an integer value from 1 to noOfAnswers 
 					}
 				}	
