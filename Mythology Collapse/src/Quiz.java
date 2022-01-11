@@ -13,16 +13,19 @@ public class Quiz {
 	public static int answerQuiz;
 	private static Scanner input= new Scanner(System.in);
 	private static int answer;
+	static var panel = new Graphics ();
 	
 	//	Check if the answer given by the player is within appropriate bounds depending on number of answers and variable type 
 	//	and then returns the answer.
 	public static int takeAnAnswer(int noOfAnswers) {
+		String s1 = null;
 		do {
 			//	check correctiveness of type
 			checkAnswer(noOfAnswers); 
 			//	ensure the answer number is within bounds
 			if (answer > noOfAnswers || answer<=0) {					
-				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
+				s1 = String.valueOf(System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers));
+				panel.getMessage(s1);
 			}	
 		} while (answer > noOfAnswers || answer<=0);
 		return answer;
@@ -32,13 +35,14 @@ public class Quiz {
 	//	Check the type of variable through an exception handling 
 	private static void  checkAnswer(int noOfAnswers) {
 		boolean continueLoop=true;
+		String s1 = null;
 		do {
 			try {
-				answer= input.nextInt();
+				answer= panel.setMessage();
 				continueLoop=false;
 			}catch(InputMismatchException exception){
 				input.nextLine(); //	erases input so that the user can try again without terminating the program
-				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
+				s1 = String.valueOf(System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers));
 			}
 		}while(continueLoop);	
 	}
@@ -331,10 +335,10 @@ public class Quiz {
 	//	Print messages for the correctiveness (or not) and returns the result of the question
 	private  boolean questionResult(int correct) { 
 		 if (answerQuiz == correct) {
-			System.out.println("Σωστή απάντηση!");
+			panel.getMessage("Σωστή απάντηση!");
 			return true;
 		} else {
-			System.out.println("Λυπάμαι, λάθος απάντηση!");
+			panel.getMessage("Λυπάμαι, λάθος απάντηση!");
 			return false;
 		}
 	}
