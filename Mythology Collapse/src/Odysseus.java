@@ -5,6 +5,7 @@ import java.util.TimerTask;
 	//	create a Timer which determines the duration of Odysseus's life after the illness he catches by the red lotus.
 	//	when the Timer stops the player is dead
 	class SetTimerTask extends TimerTask{
+		private static Graphics panel = new Graphics();
 		public void run(){
 		panel.setMessage("\nΟ Οδυσσέας είναι νεκρός! Η αρρώστια που του δημιούργησε ο λωτός τελικά τον νίκησε, αφού δεν πήρε το αντίδοτο!");
 		Odysseus.backToMenu();
