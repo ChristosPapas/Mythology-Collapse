@@ -18,12 +18,14 @@ public class Quiz {
 	//	Check if the answer given by the player is within appropriate bounds depending on number of answers and variable type 
 	//	and then returns the answer.
 	public static int takeAnAnswer(int noOfAnswers) {
+		String s1 = null;
 		do {
 			//	check correctiveness of type
 			checkAnswer(noOfAnswers); 
 			//	ensure the answer number is within bounds
 			if (answer > noOfAnswers || answer<=0) {					
-				panel.setMessage("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
+				s1 = String.valueOf(System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers));
+				panel.setMessage(s1);
 			}	
 		} while (answer > noOfAnswers || answer<=0);
 		return answer;
@@ -33,13 +35,15 @@ public class Quiz {
 	//	Check the type of variable through an exception handling 
 	private static void  checkAnswer(int noOfAnswers) {
 		boolean continueLoop=true;
+		String s1 = null;
 		do {
 			try {
 				answer= input.nextInt();
 				continueLoop=false;
 			}catch(InputMismatchException exception){
 				input.nextLine(); //	erases input so that the user can try again without terminating the program
-				panel.setMessage("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
+				s1 = String.valueOf(System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers));
+				panel.setMessage(s1);
 			}
 		}while(continueLoop);	
 	}
