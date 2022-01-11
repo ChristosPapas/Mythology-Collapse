@@ -24,7 +24,8 @@ public class Odysseus {
 	private  static Timer timer;
 	private static TimerTask task;
 	private static boolean end;
-
+	private static Graphics panel = new Graphics();
+		
 	//	constructor of Odysseus class
 	public Odysseus(Graphics panel) {
 		initialization();
