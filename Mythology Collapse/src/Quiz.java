@@ -42,7 +42,7 @@ public class Quiz {
 				int i;	
 				boolean check = false;
 				while(i <= noOfAnswers || check = true){
-					if (answer.equals(i.(toString))){
+					if (answer.equals(i.toString())){
 					check = true;	// when check becomes true we have found an integer value from 1 to noOfAnswers 
 					}
 				}	
