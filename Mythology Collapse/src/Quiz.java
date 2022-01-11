@@ -37,10 +37,11 @@ public class Quiz {
 		boolean continueLoop=true;
 		String s1 = null;
 		String ans;
+		int i;
 		do {
 			try {
 				ans = panel.getMessage(); //take the player's answer as a String value
-				int i;	
+				
 				boolean check = false;
 				while(i <= noOfAnswers || check == true){
 					if (ans.equals(i.toString())){
@@ -53,7 +54,7 @@ public class Quiz {
 				panel.setMessage(s1);
 			}
 		}while(continueLoop);	
-		answer = integer.parseInt(i);	//convert i value which contains the number of answer into an integer value
+		answer = Integer.parseInt(i);	//convert i value which contains the number of answer into an integer value
 	}
 	
 	
