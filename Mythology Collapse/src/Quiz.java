@@ -37,7 +37,7 @@ public class Quiz {
 		boolean continueLoop=true;
 		String s1 = null;
 		String ans;
-		int i;
+		int i = 1;
 		do {
 			try {
 				ans = panel.getMessage(); //take the player's answer as a String value
