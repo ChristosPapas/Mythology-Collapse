@@ -2,13 +2,12 @@ public class Hercules {
 	private static int answer_given, answer;
 	private static int checkpoint = 1;
 	private static boolean k = true, father_zeus = true;
-	private static Graphics panel = new Graphics();
 
 /*****************************************************
  * Beginning of story of Hercules. Checking the checkpoint
  * and running the corresponding story part.
  *****************************************************/
-	public Hercules() {
+	public Hercules(Graphics panel) {
 		panel.setMessage("\nΤο ακόλουθο παιχνίδι θα βασιστεί πάνω σε ερωτήσεις σχετικά με τη ζωή του ήρωα και τους άθλους που διέπραξε.");
 		panel.setMessage("\nΟ Ηρακλής ήταν αρχαίος μυθικός ήρωας, θεωρούμενος ως ο μέγιστος των Ελλήνων ηρώων."
 				+ "\n\nΩς Άθλοι του Ηρακλέους έχουν καταγραφεί στην ελληνική μυθολογία δώδεκα κατορθώματα που έκανε ο μυθικός αυτός ήρωας,"
