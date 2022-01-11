@@ -45,7 +45,7 @@ public class Quiz {
 				s1 = String.valueOf(System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers));
 				panel.setMessage(s1);
 			}
-		}while(continueLoop);	
+		}while(continueLoop);
 	}
 	
 	
