@@ -1,68 +1,63 @@
 import java.util.Scanner;
 public class Perseas  {
-	private boolean helmet; //μεταβλητή που δείχνει αν ο παίκτης έχει πάρει το κράνος
-	private boolean sack;    //μεταβλητή που δείχνει αν ο παίκτης έχει πάρει τον σάακο
-	private boolean sandals;  //μεταβλητή που δείχνει αν ο παίκτης έχει πάρει τα σανδάλια
-	private boolean shield;   //μεταβλητή που δείχνει αν ο παίκτης έχει πάρει την ασπίδα
-	private boolean sword;    //μεταβλητή που δείχνει αν ο παίκτης έχει πάρει το σπαθί
-	private boolean key=false;  //μεταβλητή που δείχνει αν ο παίκτης έχει πάρει το κλειδί
-	private boolean hammer=false;  //μεταβλητή που δείχνει αν ο παίκτης έχει πάρει το σφυρι
-	public Perseas()  {  //κατασκεβαστης της κλάσης Περσέας
-		initiateStory();   //εκκίνηση ιστορίας
+	private boolean helmet; //variable indicating whether the player has taken the helmet
+	private boolean sack;    //variable indicating whether the player has taken the sack
+	private boolean sandals;  //variable indicating whether the player has taken the sandals
+	private boolean shield;   //variable indicating whether the player has taken the shield
+	private boolean sword;    //variable indicating whether the player has taken the sword
+	private boolean key=false;  //variable indicating whether the player has taken the key
+	private boolean hammer=false;  //variable indicating whether the player has taken the hammer
+	private static Quiz q = new Quiz(); //initiating Quiz Object
+	public Perseas()  {  //constructor of the Perseas class
+		initiateStory();   //Method that initiates the story
 	}
-	private void initiateStory()  { //μεθοδος που εκεινει την ιστορία
-		helmet=false; //αρχικοποίηση του κράνους
-		sack=false;   //αρχικοποίηση του σάκου
-		sandals=false;  //αρχικοποίηση των σανδαλιών
-		shield=false;	//αρχικοποίηση της ασπίδας
-		sword=false;
+	private void initiateStory()  { //Method that initiates the story
+		helmet=false; //initializing the helmet
+		sack=false;   //initializing the sack
+		sandals=false;  //initializing the sandals
+		shield=false;	//initializing the shield
+		sword=false;    //initializing the sword
 		System.out.println("Ο Περσέας φεύγει από την Σέριφο με ένα καράβι, με σκοπό να βρει την Γοργόνα Μέδουσα. \n"
 				+ "Στη διαδρομή του συναντά τη θεά Αθηνά και το θεό Ερμή, από τους οποίους πληροφορείται \n"
-				+ "πως για να σκοτώσει την Μέδουσα θα πρέπει να προμηθευτεί τα παρακάτω όπλα: \n");   //εμφάνιση αρχικού μηνύματος
-		showMenu(); //εμφάνιση μενου
+				+ "πως για να σκοτώσει την Μέδουσα θα πρέπει να προμηθευτεί τα παρακάτω όπλα: \n");   //Showing the initial message
+		showMenu(); //method that shoes the menu
 	}
 	private void showMenu()  {   //μέθοδος που εμφανίζει το μενου
-		String message="Επίλεξε ποιο από τα παρακάτω όπλα θέλετε να αποκτήσετε: \n" //κατασκευαζω ενα μήνυμα που θα εμφανιστει στην οθονη του Χρήστη
-					+"Για να μπορέσει να πολεμήσει τη Μέδουσα θα πρέπει να χει τουλάχιστον 3/5 όπλα.\n"; 
-		int counter=0; //αρχικοποιω εναν μετρητη που δείχνει τον αριθμό που αντιστοιχει σε κάθε επιλογη
-		int helmetcounter=0; //μετρητης που αντιστοιχει στην επιλογη του κράνους
-		int sackcounter=0;   //μετρητης που αντιστοιχει στην επιλογη του σάκου
-		int sandalscounter=0;  //μετρητης που αντιστοιχει στην επιλογη για τα σανδαλια
-		int shieldcounter=0;  //μετρητης που αντιστοιχει στην επιλογη για την ασπίδα
-		int swordcounter=0;   //μετρητης που αντιστοιχει στην επιλογη για το σπαθί
+		String message="Επίλεξε ποιο από τα παρακάτω όπλα θέλετε να αποκτήσετε: \n" ;//constructing a message  
+		int counter=0; //initialize a counter that shows the number that corresponds to each option
+		int helmetcounter=0; //initialize a counter that corresponds to the helmet
+		int sackcounter=0;   //initialize a counter that corresponds to the sack
+		int sandalscounter=0;  //initialize a counter that corresponds to the sandals
+		int shieldcounter=0;  //initialize a counter that corresponds to the shield
+		int swordcounter=0;   //initialize a counter that corresponds to the sword
 		if(!helmet) {
 			counter++;
-			message = message + "Πατα "+counter+" για να πάρεις την περικεφαλαία έτσι ώστε να πλησιάσεις αόρατος τον στόχο σου \n"; //ενημέρωση του μηνύματος
+			message = message + "Πατα "+counter+" για να πάρεις την περικεφαλαία έτσι ώστε να πλησιάσεις αόρατος τον στόχο σου \n"; //updating message
 			helmetcounter=counter;
 		}
 		if(!sack) {
 			counter++;
-			message = message + "Πατα "+counter+" για να πάρεις τον μαγικό σάκο \n"; //ενημέρωση του μηνύματος
+			message = message + "Πατα "+counter+" για να πάρεις τον μαγικό σάκο \n"; //updating message
 			sackcounter=counter;
 		}
 		if(!sandals) {
 			counter++;
-			message = message + "Πατα "+counter+" για να πάρεις τα φτερωτά σανδάλια, επειδή η Γοργώ - Μέδουσα, έμενε σε βράχο, στη μέση της θάλασσας.\n"; //ενημέρωση του μηνύματος
+			message = message + "Πατα "+counter+" για να πάρεις τα φτερωτά σανδάλια, επειδή η Γοργώ - Μέδουσα, έμενε σε βράχο, στη μέση της θάλασσας.\n"; //updating message
 			sandalscounter=counter;
 		}
 		if(!shield) {
 			counter++;
-			message = message + "Πατα "+counter+" για να πάρεις την αστραφτερή ασπίδα, απ' όπου θα έβλεπε το κεφάλι της Μέδουσας. \n"; //ενημέρωση του μηνύματος
+			message = message + "Πατα "+counter+" για να πάρεις την αστραφτερή ασπίδα, απ' όπου θα έβλεπε το κεφάλι της Μέδουσας. \n"; //updating message
 			shieldcounter=counter;
 		}
 		if(!sword) {
 			counter++;
-			message = message + "Πατα "+counter+" για να πάρεις το κοφτερό σπαθί ή δρεπάνι, με το οποίο θα έκοβε τον σκληρό λαιμό της Γοργούς. \n";  //ενημέρωση του μηνύματος
+			message = message + "Πατα "+counter+" για να πάρεις το κοφτερό σπαθί ή δρεπάνι, με το οποίο θα έκοβε τον σκληρό λαιμό της Γοργούς. \n";  //updating message
 			swordcounter=counter;
 		}
-		System.out.println(message); //εμφανιση μηνυματος
-		Scanner in = new Scanner(System.in);
-		int choice = in.nextInt();
-		while(!(choice>=1 & choice<=counter)) {
-			choice = in.nextInt();
-			System.out.println("Δωσε μια έγκυρη τιμή");
-		} 
-		//αναλογα με την επιλογη του χρήστη ενεργοποιειται η καταλληλη μέθοδος 
+		System.out.println(message); //showing message
+		int choice = q.takeAnAnswer(counter);
+		//depending on the user's choice the appropriate method is activated
 		if(choice==helmetcounter) {
 			helmetTale();
 		}else if(choice==sackcounter) {
@@ -75,19 +70,14 @@ public class Perseas  {
 			swordTale();
 		}
 	}
-	private void flowadministrator(String story,String choice)  { //μέθοδος που διαχειρίζεται τη ροή του προγράμματος 
-		if(story.equals("sackTale")) { //ροη της ιστορίας με τον σάκο
+	private void flowadministrator(String story,String choice)  { //method that manages the flow of the program 
+		if(story.equals("sackTale")) { 
 			if(choice.equals("outsideCity")) {
 				System.out.println("O Περσέας ζητάει από τον φρουρό που στέκεται στην πόρτα να τον αφήσει να εισέλθει. Ο φρουρός παρόλα αυτά τον εμποδίζει ");
 				System.out.println("Ποιες απο τις παρακάτω επιλογές θα επιλέγατε?");
 				System.out.println("1) Συμβιβάζεστε με τον φρουρό.");
 				System.out.println("2) Επιτίθεστε στον φρουρό \n");
-				Scanner in=new Scanner(System.in);
-				int choice1=in.nextInt();
-				while(choice1!=1 && choice1!=2 ) {
-					System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-					choice1=in.nextInt();
-				}
+				int choice1 = q.takeAnAnswer(2);
 				if(choice1==1) {
 					flowadministrator("sackTale","westEast");
 				}
@@ -99,12 +89,7 @@ public class Perseas  {
 				System.out.println("Σας δίνονται οι παρακάτω επιλογές ");
 				System.out.println("Να κινειθείτε δυτικά της πόλης ");
 				System.out.println("Να κινειθείτε ανατολικά της πόλης ");
-				Scanner in = new Scanner(System.in);
-				int choice1=in.nextInt();
-				while(choice1!=1 && choice1!=2 ) {
-					System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-					choice1=in.nextInt();
-				}
+				int choice1 = q.takeAnAnswer(2);
 				if(choice1==1) {
 					System.out.println("Αποφασίζετε να κινειθείτε δυτικά της πόλης . \n"
 							+ "Στο δρόμο σας βρίσκετε έναν γέροντα. Του εξιστορείετε \n"
@@ -133,7 +118,7 @@ public class Perseas  {
 				flowadministrator("sackTale","outsideCity");
 			}
 		}
-		if(story.equals("swordTale")) { // ιστορία με το σπαθί
+		if(story.equals("swordTale")) { 
 			if(choice.equals("1")) {
 				System.out.println("Οι φρουροί του βασιλιά Αέλα \n"
 						+ "εμποδίζουν τον Περσέα από το να σκοτώσει τον βασιλιά τους. Παρόλα αυτά ο βασιλιάς όντας σοκαρισμένος από \n"
@@ -149,12 +134,7 @@ public class Perseas  {
 				System.out.println("Σας παρουσιάζονται οι παρακάτω δύο επιλογές: \r\n"
 						+ "1) Διόνυσος\r\\n"
 						+ "2) Διας");
-				Scanner in=new Scanner(System.in);
-				int choice1=in.nextInt();
-				while(choice1!=1 && choice1!=2 ) {
-					System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-					choice1=in.nextInt();
-				}
+				int choice1 = q.takeAnAnswer(2);
 				if(choice1==1) {
 					System.out.println("απάντησή σας είναι σωστή. Ο Αέλας σας δίνει το σπαθί");
 					helmet=true;
@@ -166,17 +146,12 @@ public class Perseas  {
 			}
 		}
 	}
-	private void helmetTale() { //ιστορία με την περικεφαλαία
+	private void helmetTale() { //the method that represents the story to get the helmet
 	       System.out.println(" Για να αποκτήσει την περικεφαλαία του Άδη η Αθήνα του κάνει την εξής ερώτηση:\r\n"
 	                       + "Σε τι μεταμορφώθηκε ο Δίας για να συνευρεθεί με την Ευρώπη;\r\n"
                             + "1) Ταύρος\r\n"
                             + "2)  Σύννεφο");
-            Scanner in=new Scanner(System.in);
-	       int choice=in.nextInt();	
-            while(choice!=1 && choice!=2 ) {
-	               System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-		       choice=in.nextInt();
-	       }
+	       int choice = q.takeAnAnswer(2);
             if(choice==1) {
 		      System.out.println(" Η απάντησή σας είναι σωστή. Ο Περσέας παίρνει την περικεφαλαία");
 		      showMenu();
@@ -186,11 +161,7 @@ public class Perseas  {
                                    + "Ο Άδης ήταν ο θεός του:\r\n"
                                    + "1) Πολέμου\r\n"
                                    + "2) Κάτω Κόσμου");
-                   choice=in.nextInt();
-                   while(choice!=1 && choice!=2 ) {
-	                     System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-		             choice=in.nextInt();
-	              }
+                   choice=q.takeAnAnswer(2);
                    if(choice==2) {
 		             System.out.println(" Η απάντησή σας είναι σωστή. Ο Περσέας παίρνει την περικεφαλαία");
 		             showMenu();
@@ -200,31 +171,22 @@ public class Perseas  {
                    }
 	       }
 	}       
-	private void sandalsTale()  { //ιστορία με τα σανδάλια
+	private void sandalsTale()  { //the method that represents the story to get the sandals 
 	         System.out.println(" Για να αποκτήσει τα φτερωτά σανδάλια ο Ερμής του κάνει την εξής ερώτηση:\r\n"
 	                         + "Ποια θεότητα συνδέεται με δεσμούς αίματος με την Αφροδίτη;\r\n"
                               + "1) Ουρανός\r\n"
                               + "2) Ωκεανός");
-             Scanner in=new Scanner(System.in);
-	         int choice=in.nextInt();	
-              while(choice!=1 && choice!=2 ) {
-	                System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-		        choice=in.nextInt();
-	         }
+             int choice = q.takeAnAnswer(2);
               if(choice==1) {
 		        System.out.println(" Η απάντησή σας είναι σωστή. Ο Περσέας παίρνει τα φτερωτά σανδάλια");
 		        showMenu();
 	         }else {
-          	        System.out.println(" Η απάντησή σας είναι λαθός. Ο Περσέας δεν παίρνει τα φτερωτά σανδάλια.");
+          	         System.out.println(" Η απάντησή σας είναι λαθός. Ο Περσέας δεν παίρνει τα φτερωτά σανδάλια.");
                      System.out.println(" Έχετε μία δεύτερη ευκαιρία\r\n"               
                                      + "Πως έγινε ο Αχιλλέας άτρωτος;\r\n"
                                      + "1) Μεγάλωσε δίπλα στους θεούς\r\n"
                                      + "2) Η μητέρα του τον βούτηξε στα νερά του ποταμού της Στύγας");
-	                choice=in.nextInt();	
-                     while(choice!=1 && choice!=2 ) {
-	                        System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-		                choice=in.nextInt();
-	                }
+	                 choice = q.takeAnAnswer(2);
                      if(choice==2) {
 		               System.out.println(" Η απάντησή σας είναι σωστή. Ο Περσέας παίρνει τα φτερωτά σανδάλια");
 		               showMenu();
@@ -234,13 +196,13 @@ public class Perseas  {
                      }
               }
 	}
-	private void sackTale()  { //chris
+	private void sackTale()  {  //the method that represents the story to get the sack
 		System.out.println("O Περσεας  φτάνει στο παλάτι  του βασιλιά Ακίνοου.\r\n"
 				+ " Ρωτώντας κάποιους περαστικούς μαθαίνει ότι ο σάκος και η ασπίδα βρίσκεται πίσω από τα τοίχη της πόλης του .");
 		flowadministrator("sackTale","outsideCity");
 		
 	}
-	private void swordTale() { //ιστορία με το σπαθί
+	private void swordTale() { //the method that represents the story to get the sword
 		System.out.println("Η Αθηνά οδήγησε τον Περσέα στην χώρα των Υπερβορείων (μυθικός λαός που ζούσε στα βουνά της Ελλάδας).\r\n\""
 				+ "Για να αποκτήσει το μυθικό σπαθί που θα σκοτώσει την Μέδουσα πρέπει να αντιμετωπίσει τον βασιλιά των Υπερβορείων Αέλα:\r\n"
 				+ "Όταν ο Περσέας Ζητάει από τον Αέλα το σπαθί αυτός του παρουσιάζει τις εξείς 2 επιλογές:\r\n"
@@ -251,27 +213,17 @@ public class Perseas  {
 		System.out.println("2) Ο περσέας συμφωνεί με την πρόταση του Βασιλιά να συμμαχίσει εναντίον "
 				+"του αδερφού του με τον όρο να τον βοηθήσει στην μάχη εναντίον της μέδουσας");
 		System.out.println("3) Ο Περσέας συμφωνεί να θυσιάσει τον Αδερφό του Μάνη με αντάλλαγαμa το σπαθί ");
-		Scanner in=new Scanner(System.in);
-		int choice=in.nextInt();
-		while(choice!=1 && choice!=2 && choice!=3) {
-			System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-  			choice=in.nextInt();
-		}
+		int choice = q.takeAnAnswer(3);
 		String Schoice=String.valueOf(choice);
 		flowadministrator("swordTale",Schoice);
 	}
-	private void aelasTale() { //ιστορία του Αέλα
+	private void aelasTale() {  //aelasTale is a substory of the swordTale
 		System.out.println("Ο Περσέας και ο Αέλας εκστρατεύουν εναντίον του Αβδηρου (αδερφός του Αέλα). \r\n"
 				+ "Μετά από μέρες ταξιδιού φτάνουν στους πρόποδες ενός βουνού που βρίσκεται σε εχθρικό έδαφος. \r\n "
 				+ "Ο βασιλιάς αέλας ζητάει την συμβουλή του Περσέα ως προς το τι θα κάνουν μετά");
 		System.out.println("Στρατοπαιδεύουν στους πρόποδες του βουνού");
 		System.out.println("Συνεχίζουν το βάδειν σε εχθρικό έδαφος");
-		Scanner in=new Scanner(System.in);
-		int choice=in.nextInt();
-		while(choice!=1 && choice!=2) {
-			System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-			choice=in.nextInt();
-		}
+		int choice = q.takeAnAnswer(2);
 		if(choice==1) {
 			  System.out.println("Οι στρατιώτες του βασιλειά στρατοπαιδεύουν στους πρόποδες του βουνού και διανυκτερεύουν εκεί. \r\n"
 			  		+ "Το βράδυ ρίχνει πολυ ισχυρή βροχή που μετατρέπει το έδαφος σε λάσπη και κάνει πολύ δύσκολο το περπάτημα\r\n"
@@ -279,11 +231,7 @@ public class Perseas  {
 			  		+ " βρίσκεται στην κορυφή του βουνού με έναν στρατό τριπλάσιο από εκείνον του αδερφού του. Ο Αέλας ξαναζητάει τη συμβουλή του Περσέα ");
 			  System.out.println("1) Να επιτεθούν κατα μέταιπω στους εχθρούς τους ανεβαίνοντας την πλαγιά");
 			  System.out.println("2) Να παραμείνουν στο στρατόπεδο πίσω από τις πρόχειρές του οχυρώσεις");
-			  choice=in.nextInt();
-			  while(choice!=1 && choice!=2) {
-				  System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-				  choice=in.nextInt();
-			  }
+			  choice = q.takeAnAnswer(2);
 			  if(choice==1) {
 				  System.out.println("Το Γλιστερό έδαφος έχει ως αποτέλεσμα οι στρατιώτες του Αέλα να γλυστρούν και να παραπατούν καθώς ανεβαίνουν την πλαγιά. \r\n"
 				  		+ "To αριθμητικό πλεονεκτημα του Αβδηρου υπερισχυει στην μάχη με αποτέλεσμα οι στρατιώτες του αέλα να τραπούν σε φυγή. \r\n"
@@ -291,11 +239,7 @@ public class Perseas  {
 				  System.out.println("Τι απο τα παρακάτω κάνετε?");
 				  System.out.println("1) Διασώζετε τον βασιλιά και τρέπεστε σε φυγή");
 				  System.out.println("2) Φεύγετε από το πεδίο της μάχης παίρνοντας μαζί σας και το σπαθί");
-				  choice=in.nextInt();
-				  while(choice!=1 && choice!=2) {
-					  System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-					  choice=in.nextInt();
-				  }
+				  choice = q.takeAnAnswer(2);
 				  if(choice==1) {
 					  System.out.println(" Περσέας επιστρέφει τον Αέλα στο βασίλειό του. Ο βασιλιάς μή ξέροντας πως να  ευχαριστήσει τον Περσέα του δίνει\r\n" 
 							  +"μία αστραφτερή ασπίδα για να νικήσει την Μέδουσα. Ο περσέας αποχωρεί από το βασίλειο για να συνεχίσει την περιπέτειά του");
@@ -314,11 +258,7 @@ public class Perseas  {
 						  +"O Περσέας εντωπίζει τον Άβδηρο τραυματισμένο στο πεδίο της μάχης:  ");
 				  System.out.println("1) Αποφασίζει να τον σκοτώσει τον Άβδηρο ");
 				  System.out.println("2) Παίρνει τον Άβδηρο όμηρο");
-				  choice=in.nextInt();
-				  while(choice!=1 && choice!=2) {
-					  System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-					  choice=in.nextInt();
-				  }
+				  choice = q.takeAnAnswer(2);
 				  if(choice==1) {
 					  System.out.println("Αναπάντεχα ο αέλας κεδίζει τον πόλεμο παρα το αριθμητικό πλεονέκτημα του αδερφού του.\r\n"
 					  		+ " Όταν μαθαίνει παρόλα αυτά την τύχη του νευριάζει με τις \r\n"
@@ -334,16 +274,12 @@ public class Perseas  {
 				  }
 			  }
 		}
-		if(choice==2) {
+		if(choice==2) { 
 			System.out.println("Οι στρατιώτες του Αέλα συνεχίζουν το βαδειν κατα τη διάρκεια της νύχτας. \r\n"
 					+ "Κατα τη διάρκεια του ταξιδιού τους παρατηρούν σε απόσταση τον εχθρικό στρατό σε ανοιχτό πεδίο. \r\n"
 					+ "Εξαιτίας του σκοταδιού δεν μπορούν να εντοπίσουν το ακριβές μέγεθος του στρατου. \r\n"
 					+ "Ο βασιλιάς αέλας ζητάει για μία ακόμα φορά την άποψη του Περσέα \r\n");
-			choice=in.nextInt();
-			while(choice!=1 && choice!=2) {
-				System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-			    choice=in.nextInt();
-			}
+			choice = q.takeAnAnswer(2);
 			if(choice==1) {
 				System.out.println( "H κατά μέτωπο επίθεση με τον εχθρικό στρατό έχει ως αποτέλεσμα ολοκληρψτική ήτα");
 				deathMessage();
@@ -357,7 +293,7 @@ public class Perseas  {
 			}
 		}
 	}
-	public void confrontGuard() { //μέθοδος που περιγράφει τη συνάντηση με τον φρουρό
+	public void confrontGuard() {  //confront guard is a substory of the sackTale
 		System.out.println("Επιτίθεστε στον φρουρό");
 		if(sword) {
 			System.out.println("Επειδή έχετε το σπαθί νικάτε τον φρουρό  \n"
@@ -376,22 +312,13 @@ public class Perseas  {
 			}
 			System.out.println(++count+") Σπάτε την πόρτα με τα χέρια σας");
 			int handcounter=count;
-			Scanner in = new Scanner(System.in);
-			int choice1=in.nextInt();
-			while(!(choice1>0 & choice1<=count)) {
-				System.out.println("Εισάγετε μία έγκυρη επιλογή");
-				choice1=in.nextInt();
-			}
+			int choice1=q.takeAnAnswer(count);
 			if(choice1 == hammercounter) {
 				System.out.println("Ανοίξατε με επιτυχία την πόρτα αλλά τώρα "
 						+ "έχετε τραβήξει την προσοχή όλου του εχθρικού στρατού. Τι κάνετε?");     
 				System.out.println("1) Επιτίθεστε κατα μέτωπο?");
 				System.out.println("2) Ζητάτε να διαπραγματευτείτε με το Βασιλιά");
-				choice1=in.nextInt();
-				while(!(choice1>0 & choice1<=count)) {
-					System.out.println("Εισάγετε μία έγκυρη επιλογή");
-					choice1=in.nextInt();
-				}
+				choice1=q.takeAnAnswer(count);
 				if(choice1 == 1) {
 					System.out.println("Επιτήθεστε κατά μέτωπο παρόλα αυτά \n"
 							+ "οι δυνάμεις του βασιλιά υπερισχύουν");
@@ -406,11 +333,7 @@ public class Perseas  {
 					System.out.println("2. Ο Θεός Ήφαιστος");
 					System.out.println("3. Η θαλασσινή θεά Θέτιδα");
 					System.out.println("4. Η θεά Αθηνά");
-					choice1=in.nextInt();  
-					while(!(choice1>0 & choice1<=4)) {
-						System.out.println("Εισάγετε μία έγκυρη επιλογή");
-						choice1=in.nextInt();
-					}
+					choice1=q.takeAnAnswer(4);
 					if (choice1 == 4) {
 						System.out.println("Σωστή απάντηση λαμβάνετε τον μαγικό σάκο");
 						sack=true;
@@ -435,11 +358,7 @@ public class Perseas  {
 				System.out.println("2. Ο Δίας και η Θέτιδα");
 				System.out.println("3. Ο Δίας και η Αλκμήνη");
 				System.out.println("4. Ο Αθάμας και η Νεφέλη");
-				choice1=in.nextInt();
-				while(!(choice1>0 & choice1<=4)) {
-					System.out.println("Εισάγετε μία έγκυρη επιλογή");
-					choice1=in.nextInt();
-				}
+				choice1=q.takeAnAnswer(4);
 				if (choice1 == 4) {
 					System.out.println("Σωστή απάντηση λαμβάνετε τον μαγικό σάκο");
 					sack=true;
@@ -453,7 +372,7 @@ public class Perseas  {
 			flowadministrator("sackTale", "outsideCity");
 		}
 	}
-	public void westStory()  {
+	public void westStory()  { //westStory is a substory of the sackTale where the player goes to the West
 		System.out.println("Αποφασίζετε να κινειθείτε δυτικά της πόλης. \n"
 				+ "Στο δρόμο σας βρίσκετε έναν γέροντα. Του εξιστορείετε την \n"
 				+ "περιπέτειά σας και ισχυρίζεται ότι γνωρίζει έναν τρόπο να μπείτε \n"
@@ -464,12 +383,7 @@ public class Perseas  {
 		System.out.println("Έχετε τις παρακάτω επιλογές");
 		System.out.println("1) Εισέρχεστε στην πόλη μέσω της πύλης πρώτοι");
 		System.out.println("2) Όντας δυσπιστοι υποδικνείετε στον γέροντα να περάσει πρώτος");
-		Scanner in=new Scanner(System.in);
-		int choice1=in.nextInt();
-		while(!(choice1>0 & choice1<=2)) {
-			System.out.println("Εισάγετε μία έγκυρη επιλογή");
-			choice1=in.nextInt();
-		}
+		int choice1=q.takeAnAnswer(2);
 		if (choice1 == 1) {
 			System.out.println("Με το που ανοίγετε την πόρτα συνηδειτοποιείτε ότι πρόκειται \n"
 					+ "για μία ενέδρα και σας περιμένουν από πίσω οι φρουροί του βασιλιά. \n"
@@ -478,11 +392,7 @@ public class Perseas  {
 			System.out.println("Έχετε τις παρακάτω επιλογές:");
 			System.out.println("1) Πολεμάτε τους Φρουρούς του βασιλειά");
 			System.out.println("2) Προσπαθείτε να αποδράσετε από την πόλη");
-			choice1=in.nextInt();
-			while(!(choice1>0 & choice1<=2)) {
-				System.out.println("Εισάγετε μία έγκυρη επιλογή");
-				choice1=in.nextInt();
-			}
+			choice1=q.takeAnAnswer(2);
 			if (choice1 == 1) {
 				System.out.println("Η αναταραχή που πραγματοποιείται στην πόλη εξααιτίας της μάχης \n" 
 						+ "τραβάει την προσοχή του βασιλιά ο οποίος σας βλέπει να μάχεστε γενναία. Θαυμάζει το κουράγιο σας \n"
@@ -492,11 +402,7 @@ public class Perseas  {
 				System.out.println("2. Νόστιμο φρούτο");
 				System.out.println("3. Πτώση ενός μήλου");
 				System.out.println("4. Πολύτιμο δώρο");
-				choice1=in.nextInt();
-				while(!(choice1>0 & choice1<=4)) {
-					System.out.println("Εισάγετε μία έγκυρη επιλογή");
-					choice1=in.nextInt();
-				}
+				choice1=q.takeAnAnswer(4);
 				if (choice1 == 4) {
 					System.out.println("Σωστή απάντηση λαμβάνετε τον μαγικό σάκο");
 					sack=true;
@@ -519,17 +425,12 @@ public class Perseas  {
 			sack=true;
 		}
 	}
-	public void eastStory() {
+	public void eastStory() { //eastStory is a substory of the sackTale where the player goes to the East
 		System.out.println("Καθώς κινείστε προς τα ανατολικά συναντάται μία καινούργια πόλη. Τι κάνετε πρώτα");
 		System.out.println("1) Εισέρχεστε στην εκλησία");
 		System.out.println("2) Μιλάτε στον μαραγκό της πόλης");
 		System.out.println("3) Επιστρέφετε πίσω από τα τοίχοι της πόλης");
-		Scanner in=new Scanner(System.in);
-		int choice1=in.nextInt();
-		while(!(choice1>0 & choice1<=3)) {
-			System.out.println("Εισάγετε μία έγκυρη επιλογή");
-			choice1=in.nextInt();
-		}
+		int choice1=q.takeAnAnswer(3);
 		while (choice1 != 3) {
 			if (choice1 == 1 ) {
 					System.out.println("Μέσα στον ναό συναντάτε ένα ιερέα στον οποίο εξιστορείτε την περιπέτειά σας");
@@ -540,11 +441,7 @@ public class Perseas  {
 					System.out.println("2. Ο Κάλχας");
 					System.out.println("3. Ο Τειρεσίας");
 					System.out.println("4. Ο Άνιος");
-					choice1=in.nextInt();
-					while(!(choice1>0 & choice1<=4)) {
-						System.out.println("Εισάγετε μία έγκυρη επιλογή");
-						choice1=in.nextInt();
-					}
+					choice1=q.takeAnAnswer(4);
 					if (choice1 ==4 ) {
 						System.out.println("Απαντήσατε σωστά παίρνετε το κλειδί της πόλης");
 						key=true;
@@ -555,11 +452,7 @@ public class Perseas  {
 				System.out.println("Ο Μαραγκός ακούει την ιστορία σας και προθυμοποιείται να σας δώσει ένα από τα αντικειμενα ");
 				System.out.println("1) To σπαθί");
 				System.out.println("2) Ένα σφυρί ειδικά φτιοαγμένο για να σπάσει την πόρτα της πόλης");
-				choice1=in.nextInt();
-				while(!(choice1>0 & choice1<=2)) {
-					System.out.println("Εισάγετε μία έγκυρη επιλογή");
-					choice1=in.nextInt();
-				}
+				choice1=q.takeAnAnswer(2);
 				if (choice1==1) {
 					System.out.println("Συγχαρητήρια πήρες το σπαθί");
 					sword=true;
@@ -572,29 +465,19 @@ public class Perseas  {
 			System.out.println("1) Εισέρχεστε στην εκλησία");
 			System.out.println("2) Μιλάτε στον μαραγκό της πόλης");
 			System.out.println("3) Επιστρέφετε πίσω από τα τοίχοι της πόλης");
-			choice1=in.nextInt();
-			while(!(choice1>0 & choice1<=3)) {
-				System.out.println("Εισάγετε μία έγκυρη επιλογή");
-				choice1=in.nextInt();
-			}
+			choice1=q.takeAnAnswer(3);
 		}
 	}
-	private void deathMessage() { //μήνυμα θανατου
+	private void deathMessage() { //method that shows the death message and redirects the user to the menu
 		System.out.println("Εχασες το παιχνίδι, πάτα 1 αν θες να σταματήσεις να παίζεις \r\n"
 				+ "ή 2 αν θες να ξεκινήσεις από την αρχή ή 3 αν θες να πας στο τελευταίο checkpoint");
 		Scanner in=new Scanner(System.in);
-		int choice=in.nextInt();
-		while(choice!=1 && choice!=2 && choice!=3) {
-			System.out.println("Παρακαλω εισαγετε μια εγκυρη επιλογη ");
-			choice=in.nextInt();
-		}
+		int choice=q.takeAnAnswer(3);
 		if(choice==2) {
 			initiateStory();
 		}else if (choice==3) {
 			showMenu();
 		}
 	}
-	public static void main (String[] args) {
-		Perseas story = new Perseas();
-	}
 }
+
