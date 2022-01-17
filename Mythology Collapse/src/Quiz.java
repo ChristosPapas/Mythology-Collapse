@@ -1,3 +1,6 @@
+package MythologyCollapse;
+
+
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.InputMismatchException;
@@ -13,6 +16,11 @@ public class Quiz {
 	public static int answerQuiz;
 	private static Scanner input= new Scanner(System.in);
 	private static int answer;
+	private static Graphics panel;
+	
+	public Quiz(Graphics panel) {
+		Quiz.panel = panel;
+	}
 	
 	//	Check if the answer given by the player is within appropriate bounds depending on number of answers and variable type 
 	//	and then returns the answer.
@@ -20,10 +28,18 @@ public class Quiz {
 		String s1 = null;
 		do {
 			//	check correctiveness of type
-			checkAnswer(noOfAnswers); 
+			try {
+				checkAnswer(noOfAnswers);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} 
+			
 			//	ensure the answer number is within bounds
 			if (answer > noOfAnswers || answer<=0) {					
-				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
+				s1 = String.valueOf(System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d. Προσπάθησε ξανά!",noOfAnswers));
+				
+				System.out.println(s1);
+				panel.setMessage(s1);
 			}	
 		} while (answer > noOfAnswers || answer<=0);
 		return answer;
@@ -31,25 +47,22 @@ public class Quiz {
 		
 	
 	//	Check the type of variable through an exception handling 
-	private static void  checkAnswer(int noOfAnswers) {
+	private static void  checkAnswer(int noOfAnswers) throws InterruptedException{
 		String ans;
 		int i;
 		boolean check;
 		do {	
 			i = 0 ;
 			check = false;
-			try {
-				ans = input.nextLine(); //take the player's answer as an interger value
-				
+				ans = panel.getInputInt(); //take the player's answer as a String value
 				while(i < noOfAnswers && check == false){
 					i++;
 					if (ans.equals(Integer.toString(i))){
-						check = true;	// when check becomes true we have found an integer value from 1 to noOfAnswers 
+					check = true;	// when check becomes true we have found an integer value from 1 to noOfAnswers
 					}
 				}	
-
-			}catch(InputMismatchException exception){
-				System.out.printf("Πρέπει να πληκτρολογήσεις έναν ακέραιο μεταξύ 1 και %d.\nΠροσπάθησε ξανά!\n",noOfAnswers);
+			if(!check){
+				panel.errorInputMessage(noOfAnswers);
 			}
 		}while(check == false);	
 		answer = i;	//convert i value which contains the number of answer into an integer value
@@ -141,11 +154,11 @@ public class Quiz {
 	//	Display  the corresponding question and read the answer from the player. Also returns the result of the answer.
 	
 	private  boolean  question1() {
-		System.out.println("Τι εννοούμε με τη φράση δούρειος ίππος;");
-		System.out.println("1. Τρόπος εξαπάτησης");
-		System.out.println("2. Γρήγορο άλογο");
-		System.out.println("3. Θεϊκό σχέδιο");
-		System.out.println("4. Πολεμικό άρμα");
+		panel.setMessage("<html>Τι εννοούμε με τη φράση δούρειος ίππος;<html>");
+		panel.setMessage("<html><br/>1. Τρόπος εξαπάτησης<html>");
+		panel.setMessage("<html><br/>2. Γρήγορο άλογο<html>");
+		panel.setMessage("<html><br/>3. Θεϊκό σχέδιο<html>");
+		panel.setMessage("<html><br/>4. Πολεμικό άρμα<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(1);
 	}
@@ -153,189 +166,189 @@ public class Quiz {
 	
 
 	private  boolean  question2() {
-		System.out.println("Ποιοι ήταν οι γονείς του Αχιλλέα;");
-		System.out.println("1. Ο Πηλέας και η Θέτιδα");
-		System.out.println("2. Ο Δίας και η Θέτιδα");
-		System.out.println("3. Ο Δίας και η Αλκμήνη");
-		System.out.println("4. Ο Αθάμας και η Νεφέλη");
+		panel.setMessage("<html>Ποιοι ήταν οι γονείς του Αχιλλέα;<html>");
+		panel.setMessage("<html><br/>1. Ο Πηλέας και η Θέτιδα<html>");
+		panel.setMessage("<html><br/>2. Ο Δίας και η Θέτιδα<html>");
+		panel.setMessage("<html><br/>3. Ο Δίας και η Αλκμήνη<html>");
+		panel.setMessage("<html><br/>4. Ο Αθάμας και η Νεφέλη<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(1);
 	}
 	
 	private  boolean  question3() {
-		System.out.println("Ποιος κατασκεύασε την πανοπλία του Αχιλλέα;");
-		System.out.println("1. Ο Θεός Άρης");
-		System.out.println("2. Ο Θεός Ήφαιστος");
-		System.out.println("3. Η θαλασσινή θεά Θέτιδα");
-		System.out.println("4. Η θεά Αθηνά");
+		panel.setMessage("<html>Ποιος κατασκεύασε την πανοπλία του Αχιλλέα;<html>");
+		panel.setMessage("<html><br/>1. Ο Θεός Άρης<html>");
+		panel.setMessage("<html><br/>2. Ο Θεός Ήφαιστος<html>");
+		panel.setMessage("<html><br/>3. Η θαλασσινή θεά Θέτιδα<html>");
+		panel.setMessage("<html><br/>4. Η θεά Αθηνά<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(2);
 	}
 	
 	private  boolean  question4() {
-		System.out.println("Τι είναι το Ίλιον;");
-		System.out.println("1. Η πόλη της Τροίας");
-		System.out.println("2. Ο ήλιος");
-		System.out.println("3. Ο Τρωικός πόλεμος");
-		System.out.println("4. Το ποίημα που εξιστορεί τον Τρωικό πόλεμο");
+		panel.setMessage("<html>Τι είναι το Ίλιον;<html>");
+		panel.setMessage("<html><br/>1. Η πόλη της Τροίας<html>");
+		panel.setMessage("<html><br/>2. Ο ήλιος<html>");
+		panel.setMessage("<html><br/>3. Ο Τρωικός πόλεμος<html>");
+		panel.setMessage("<html><br/>4. Το ποίημα που εξιστορεί τον Τρωικό πόλεμο<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(1);
 	}
 	
 	private boolean  question5() {
-		System.out.println("Τι εννοούμε με τη φράση μήλο της Έριδας;");
-		System.out.println("1. Αιτία για τσακωμό");
-		System.out.println("2. Νόστιμο φρούτο");
-		System.out.println("3. Πτώση ενός μήλου");
-		System.out.println("4. Πολύτιμο δώρο");
+		panel.setMessage("<html>Τι εννοούμε με τη φράση μήλο της Έριδας;<html>");
+		panel.setMessage("<html><br/>1. Αιτία για τσακωμό<html>");
+		panel.setMessage("<html><br/>2. Νόστιμο φρούτο<html>");
+		panel.setMessage("<html><br/>3. Πτώση ενός μήλου<html>");
+		panel.setMessage("<html><br/>4. Πολύτιμο δώρο<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(1);
 	}
 	
 	private boolean question6() {
-		System.out.println("Τίνος ιδέα ήταν ο Δούρειος ίππος;");
-		System.out.println("1. Του γερο-Νέστορα");
-		System.out.println("2. Του Αγαμέμνονα");
-		System.out.println("3. Του Οδυσσέα");
-		System.out.println("4. Του Μενέλαου");
+		panel.setMessage("<html>Τίνος ιδέα ήταν ο Δούρειος ίππος;<html>");
+		panel.setMessage("<html><br/>1. Του γερο-Νέστορα<html>");
+		panel.setMessage("<html><br/>2. Του Αγαμέμνονα<html>");
+		panel.setMessage("<html><br/>3. Του Οδυσσέα<html>");
+		panel.setMessage("<html><br/>4. Του Μενέλαου<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(3);
 	}
 	
 	private boolean  question7() {
-		System.out.println("Ποιος μάντης έδωσε χρησμό στους Αχαιούς ότι θα έπαιρναν την Τροία σε δέκα χρόνια;");
-		System.out.println("1. Ο Φινέας");
-		System.out.println("2. Ο Κάλχας");
-		System.out.println("3. Ο Τειρεσίας");
-		System.out.println("4. Ο Άνιος");
+		panel.setMessage("<html>Ποιος μάντης έδωσε χρησμό στους Αχαιούς ότι θα έπαιρναν την Τροία σε δέκα χρόνια;<html>");
+		panel.setMessage("<html><br/>1. Ο Φινέας<html>");
+		panel.setMessage("<html><br/>2. Ο Κάλχας<html>");
+		panel.setMessage("<html><br/>3. Ο Τειρεσίας<html>");
+		panel.setMessage("<html><br/>4. Ο Άνιος<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(4);
 	}
 	
 	private  boolean  question8() {
-		System.out.println("Ποιος σκότωσε τον Έκτορα;");
-		System.out.println("1. Ο Αγαμέμνονας");
-		System.out.println("2. Ο Αίαντας");
-		System.out.println("3. Ο Αχιλλέας");
-		System.out.println("4. Ο Οδυσσέας");
+		panel.setMessage("<html>Ποιος σκότωσε τον Έκτορα;<html>");
+		panel.setMessage("<html><br/>1. Ο Αγαμέμνονας<html>");
+		panel.setMessage("<html><br/>2. Ο Αίαντας<html>");
+		panel.setMessage("<html><br/>3. Ο Αχιλλέας<html>");
+		panel.setMessage("<html><br/>4. Ο Οδυσσέας<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(3);
 	}
 	
 	private boolean  question9() {
-		System.out.println("Ποια ήταν η ωραία γυναίκα, που έγινε αφορμή για τον Τρωικό πόλεμο;");
-		System.out.println("1. Η Ανδρομάχη, γυναίκα του Έκτορα");
-		System.out.println("2. Η Χρυσηίδα, κόρη του ιερέα Χρύση");
-		System.out.println("3. Η Ιφιγένεια, κόρη του βασιλιά Αγαμέμνονα");
-		System.out.println("4. Η Ελένη, γυναίκα του βασιλιά Μενέλαου");
+		panel.setMessage("<html>Ποια ήταν η ωραία γυναίκα, που έγινε αφορμή για τον Τρωικό πόλεμο;<html>");
+		panel.setMessage("<html><br/>1. Η Ανδρομάχη, γυναίκα του Έκτορα<html>");
+		panel.setMessage("<html><br/>2. Η Χρυσηίδα, κόρη του ιερέα Χρύση<html>");
+		panel.setMessage("<html><br/>3. Η Ιφιγένεια, κόρη του βασιλιά Αγαμέμνονα<html>");
+		panel.setMessage("<html><br/>4. Η Ελένη, γυναίκα του βασιλιά Μενέλαου<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(4);
 	}
 	
 	private  boolean  question10() {
-		System.out.println("Πώς σκοτώθηκε ο Αχιλλέας;");
-		System.out.println("1. Χτυπήθηκε από κοντάρι στον λαιμό");
-		System.out.println("2. Χτυπήθηκε από φαρμακωμένο βέλος στη δεξιά φτέρνα του");
-		System.out.println("3. Τον έπνιξαν δυο τεράστια φίδια σταλμένα από τον θεό Ποσειδώνα");
-		System.out.println("4. Κεραυνοβολήθηκε από τον θεό Δία");
+		panel.setMessage("<html>Πώς σκοτώθηκε ο Αχιλλέας;<html>");
+		panel.setMessage("<html><br/>1. Χτυπήθηκε από κοντάρι στον λαιμό<html>");
+		panel.setMessage("<html><br/>2. Χτυπήθηκε από φαρμακωμένο βέλος στη δεξιά φτέρνα του<html>");
+		panel.setMessage("<html><br/>3. Τον έπνιξαν δυο τεράστια φίδια σταλμένα από τον θεό Ποσειδώνα<html>");
+		panel.setMessage("<html><br/>4. Κεραυνοβολήθηκε από τον θεό Δία<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(2);
 	}
 	
 	private  boolean  question11() {
-		System.out.println("Γιατί ο Αχιλλέας αποσύρθηκε στη σκηνή του και έπαψε να πολεμάει τον δέκατο χρόνο της πολιορκίας;");
-		System.out.println("1. Κατάλαβε ότι δεν είχε νόημα ο πόλεμος, επειδή τα τείχη της Τροίας ήταν απόρθητα");
-		System.out.println("2. Θύμωσε με τον Αγαμέμνονα, γιατί δεν σεβάστηκε τον Χρύση που ήταν ιερέας του Απόλλωνα");
-		System.out.println("3. Θύμωσε, επειδή ο Αγαμέμνονας του πήρε τη σκλάβα Βρισηίδα.");
-		System.out.println("4. Θύμωσε, επειδή ο Αγαμέμνονας δεν τον άφησε να γίνει αυτός αρχηγός των Αχαιών");
+		panel.setMessage("<html>Γιατί ο Αχιλλέας αποσύρθηκε στη σκηνή του και έπαψε να πολεμάει τον δέκατο χρόνο της πολιορκίας;<html>");
+		panel.setMessage("<html><br/>1. Κατάλαβε ότι δεν είχε νόημα ο πόλεμος, επειδή τα τείχη της Τροίας ήταν απόρθητα<html>");
+		panel.setMessage("<html><br/>2. Θύμωσε με τον Αγαμέμνονα, γιατί δεν σεβάστηκε τον Χρύση που ήταν ιερέας του Απόλλωνα<html>");
+		panel.setMessage("<html><br/>3. Θύμωσε, επειδή ο Αγαμέμνονας του πήρε τη σκλάβα Βρισηίδα.<html>");
+		panel.setMessage("<html><br/>4. Θύμωσε, επειδή ο Αγαμέμνονας δεν τον άφησε να γίνει αυτός αρχηγός των Αχαιών<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(3);
 	}
 	
 	private boolean question12() {
-		System.out.println("Τι έκανε ο Αχιλλέας, όταν ο Πάτροκλος του ζήτησε να πολεμήσει εκείνος στη θέση του;");
-		System.out.println("1. Δεν δέχτηκε, επειδή φοβόταν μήπως τον αναγνωρίσουν οι Τρώες και τον σκοτώσουν");
-		System.out.println("2. Δέχτηκε. Του έδωσε την πανοπλία του, ενώ του είπε να κυνηγήσει τους Τρώες και να εισβάλει στην πόλη τους");
-		System.out.println("3. Δεν δέχτηκε, επειδή είχε ορκιστεί να μην πολεμήσει με κανέναν τρόπο");
-		System.out.println("4. Δέχτηκε. Του έδωσε την πανοπλία του, ενώ του είπε να διώξει τους Τρώες από το στρατόπεδο των Αχαιών και να γυρίσει πίσω");
+		panel.setMessage("<html>Τι έκανε ο Αχιλλέας, όταν ο Πάτροκλος του ζήτησε να πολεμήσει εκείνος στη θέση του;<html>");
+		panel.setMessage("<html><br/>1. Δεν δέχτηκε, επειδή φοβόταν μήπως τον αναγνωρίσουν οι Τρώες και τον σκοτώσουν<html>");
+		panel.setMessage("<html><br/>2. Δέχτηκε. Του έδωσε την πανοπλία του, ενώ του είπε να κυνηγήσει τους Τρώες και να εισβάλει στην πόλη τους<html>");
+		panel.setMessage("<html><br/>3. Δεν δέχτηκε, επειδή είχε ορκιστεί να μην πολεμήσει με κανέναν τρόπο<html>");
+		panel.setMessage("<html><br/>4. Δέχτηκε. Του έδωσε την πανοπλία του, ενώ του είπε να διώξει τους Τρώες από το στρατόπεδο των Αχαιών και να γυρίσει πίσω<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(4);
 	}
 	
 	private  boolean question13() {
-		System.out.println("Ποιος σκότωσε τον Αχιλλέα;");
-		System.out.println("1. Ο Απόλλωνας");
-		System.out.println("2. Ο Πάρης");
-		System.out.println("3. Ο Έκτορας");
-		System.out.println("4. Ο Αγαμέμνονας");
+		panel.setMessage("<html>Ποιος σκότωσε τον Αχιλλέα;<html>");
+		panel.setMessage("<html><br/>1. Ο Απόλλωνας<html>");
+		panel.setMessage("<html><br/>2. Ο Πάρης<html>");
+		panel.setMessage("<html><br/>3. Ο Έκτορας<html>");
+		panel.setMessage("<html><br/>4. Ο Αγαμέμνονας<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(2);
 	}
 	
 	private boolean question14() {
-		System.out.println("Ποιος αρχαίος ποιητής έγραψε για τον Τρωικό πόλεμο και για τις περιπέτειες του Οδυσσέα;");
-		System.out.println("1. Ο Πίνδαρος");
-		System.out.println("2. Ο Ευριπίδης");
-		System.out.println("3. Ο Ησίοδος");
-		System.out.println("4. Ο Όμηρος");
+		panel.setMessage("<html>Ποιος αρχαίος ποιητής έγραψε για τον Τρωικό πόλεμο και για τις περιπέτειες του Οδυσσέα;<html>");
+		panel.setMessage("<html><br/>1. Ο Πίνδαρος<html>");
+		panel.setMessage("<html><br/>2. Ο Ευριπίδης<html>");
+		panel.setMessage("<html><br/>3. Ο Ησίοδος<html>");
+		panel.setMessage("<html><br/>4. Ο Όμηρος<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(4);
 	}
 	
 	private boolean question15() {
-		System.out.println("Τι έκανε ο Αχιλλέας, όταν ο Πρίαμος του ζήτησε το σώμα του νεκρού Έκτορα;");
-		System.out.println("1. Οργίστηκε και σκότωσε τον Πρίαμο");
-		System.out.println("2. Συγκινήθηκε και του το έδωσε, αφού πρώτα διέταξε να το πλύνουν και να το στολίσουν");
-		System.out.println("3. Του το έδωσε, επειδή φοβήθηκε μήπως θυμώσουν οι θεοί αν δεν σεβαστεί την επιθυμία του Πριάμου");
-		System.out.println("4. Δεν δέχτηκε και έδιωξε τον Πρίαμο θυμωμένος");
+		panel.setMessage("<html>Τι έκανε ο Αχιλλέας, όταν ο Πρίαμος του ζήτησε το σώμα του νεκρού Έκτορα;<html>");
+		panel.setMessage("<html><br/>1. Οργίστηκε και σκότωσε τον Πρίαμο<html>");
+		panel.setMessage("<html><br/>2. Συγκινήθηκε και του το έδωσε, αφού πρώτα διέταξε να το πλύνουν και να το στολίσουν<html>");
+		panel.setMessage("<html><br/>3. Του το έδωσε, επειδή φοβήθηκε μήπως θυμώσουν οι θεοί αν δεν σεβαστεί την επιθυμία του Πριάμου<html>");
+		panel.setMessage("<html><br/>4. Δεν δέχτηκε και έδιωξε τον Πρίαμο θυμωμένος<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(2);
 	}
 	
 	private boolean question16() {
-		System.out.println("Θυσιάστηκε τελικά η Ιφιγένεια στην Αυλίδα;");
-		System.out.println("1. Όχι, την ώρα της θυσίας η θεά Άρτεμις πήρε την Ιφιγένεια από τον βωμό και άφησε στη θέση της ένα ελάφι");
-		System.out.println("2. Όχι, η Ιφιγένεια δεν δέχτηκε να θυσιαστεί");
-		System.out.println("3. Όχι, η μητέρα της Ιφιγένειας δεν την άφησε να πάει στην Αυλίδα για να θυσιαστεί");
-		System.out.println("4. Ναι, η Ιφιγένεια θυσιάστηκε στη θεά Άρτεμη για το καλό της πατρίδας");
+		panel.setMessage("<html>Θυσιάστηκε τελικά η Ιφιγένεια στην Αυλίδα;<html>");
+		panel.setMessage("<html><br/>1. Όχι, την ώρα της θυσίας η θεά Άρτεμις πήρε την Ιφιγένεια από τον βωμό και άφησε στη θέση της ένα ελάφι<html>");
+		panel.setMessage("<html><br/>2. Όχι, η Ιφιγένεια δεν δέχτηκε να θυσιαστεί<html>");
+		panel.setMessage("<html><br/>3. Όχι, η μητέρα της Ιφιγένειας δεν την άφησε να πάει στην Αυλίδα για να θυσιαστεί<html>");
+		panel.setMessage("<html><br/>4. Ναι, η Ιφιγένεια θυσιάστηκε στη θεά Άρτεμη για το καλό της πατρίδας<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(1);
 	}
 	
 	private boolean question17() {
-		System.out.println("Ποιος σκότωσε τον Πάτροκλο;");
-		System.out.println("1. Ο Πάρης");
-		System.out.println("2. Ο θεός Απόλλωνας");
-		System.out.println("3. Ο Πρίαμος");
-		System.out.println("4. Ο Έκτορας");
+		panel.setMessage("<html>Ποιος σκότωσε τον Πάτροκλο;<html>");
+		panel.setMessage("<html><br/>1. Ο Πάρης<html>");
+		panel.setMessage("<html><br/>2. Ο θεός Απόλλωνας<html>");
+		panel.setMessage("<html><br/>3. Ο Πρίαμος<html>");
+		panel.setMessage("<html><br/>4. Ο Έκτορας<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(4);
 	}
 	
 	private boolean question18() {
-		System.out.println("Ποιοι θεοί και θεές υποστήριζαν φανερά τους Αχαιούς;");
-		System.out.println("1. Η Αφροδίτη, ο Απόλλωνας και ο Άρης");
-		System.out.println("2. Η Ήρα, η Αθηνά και ο Ποσειδώνας");
+		panel.setMessage("<html>Ποιοι θεοί και θεές υποστήριζαν φανερά τους Αχαιούς;<html>");
+		panel.setMessage("<html><br/>1. Η Αφροδίτη, ο Απόλλωνας και ο Άρης<html>");
+		panel.setMessage("<html><br/>2. Η Ήρα, η Αθηνά και ο Ποσειδώνας<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(2);
 	}
 	
 	private boolean question19() {
-		System.out.println("Γιατί τα πλοία των Αχαιών έμεναν αραγμένα στην Αυλίδα και δεν ξεκινούσαν για την εκστρατεία;");
-		System.out.println("1. Ο θεός Δίας εμπόδιζε τους ανέμους να φυσήξουν, γιατί δεν ήθελε να πολεμήσουν οι Αχαιοί με τους Τρώες");
-		System.out.println("2. Η θεά Αφροδίτη εμπόδιζε τους ανέμους να φυσήξουν, γιατί ήθελε να προστατέψει τους Τρώες");
-		System.out.println("3. Η θεά Άρτεμις εμπόδιζε τους ανέμους να φυσήξουν, γιατί ο Αγαμέμνονας είχε σκοτώσει το ιερό ελάφι της");
-		System.out.println("4. Οι βασιλιάδες των Αχαιών δεν μπορούσαν να συμφωνήσουν ποιος θα ήταν ο αρχηγός της εκστρατείας");
+		panel.setMessage("<html>Γιατί τα πλοία των Αχαιών έμεναν αραγμένα στην Αυλίδα και δεν ξεκινούσαν για την εκστρατεία;<html>");
+		panel.setMessage("<html><br/>1. Ο θεός Δίας εμπόδιζε τους ανέμους να φυσήξουν, γιατί δεν ήθελε να πολεμήσουν οι Αχαιοί με τους Τρώες<html>");
+		panel.setMessage("<html><br/>2. Η θεά Αφροδίτη εμπόδιζε τους ανέμους να φυσήξουν, γιατί ήθελε να προστατέψει τους Τρώες<html>");
+		panel.setMessage("<html><br/>3. Η θεά Άρτεμις εμπόδιζε τους ανέμους να φυσήξουν, γιατί ο Αγαμέμνονας είχε σκοτώσει το ιερό ελάφι της<html>");
+		panel.setMessage("<html><br/>4. Οι βασιλιάδες των Αχαιών δεν μπορούσαν να συμφωνήσουν ποιος θα ήταν ο αρχηγός της εκστρατείας<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(3);
 	}
 	
 	private boolean question20() {
-		System.out.println("Τι παραστάσεις είχε οι ασπίδα του Αχιλλέα;");
-		System.out.println("1. Παραστάσεις ειρηνικές");
-		System.out.println("2. Παραστάσεις με στοιχεία της φύσης (ήλιο, φεγγάρι κλπ)");
-		System.out.println("3. Παραστάσεις που αφορούν τον πόλεμο αλλά και την ειρήνη");
-		System.out.println("4. Σκηνές από την επιλογή του αρχηγού τηε εκστρατείας");
+		panel.setMessage("<html>Τι παραστάσεις είχε οι ασπίδα του Αχιλλέα;<html>");
+		panel.setMessage("<html><br/>1. Παραστάσεις ειρηνικές<html>");
+		panel.setMessage("<html><br/>2. Παραστάσεις με στοιχεία της φύσης (ήλιο, φεγγάρι κλπ)<html>");
+		panel.setMessage("<html><br/>3. Παραστάσεις που αφορούν τον πόλεμο αλλά και την ειρήνη<html>");
+		panel.setMessage("<html><br/>4. Σκηνές από την επιλογή του αρχηγού τηε εκστρατείας<html>");
 		answerQuiz = takeAnAnswer(4);
 		return questionResult(3);
 	}
@@ -343,10 +356,10 @@ public class Quiz {
 	//	Print messages for the correctiveness (or not) and returns the result of the question
 	private  boolean questionResult(int correct) { 
 		 if (answerQuiz == correct) {
-			 System.out.println("Σωστή απάντηση!");
+			panel.setMessage("<html>Σωστή απάντηση!<html>");
 			return true;
 		} else {
-			System.out.println("Λυπάμαι, λάθος απάντηση!");
+			panel.setMessage("<html>Λυπάμαι, λάθος απάντηση!<html>");
 			return false;
 		}
 	}
