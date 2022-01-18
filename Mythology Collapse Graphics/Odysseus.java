@@ -33,6 +33,7 @@ package MythologyCollapse;
 		//	constructor of Odysseus class
 		public Odysseus(Graphics panel) {
 			Odysseus.panel = panel;
+			panel.setImage("/resources/odAdv.png");
 			q= new Quiz(panel);
 			initialization();
 		}
