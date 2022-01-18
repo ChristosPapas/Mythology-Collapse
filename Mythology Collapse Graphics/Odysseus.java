@@ -57,12 +57,12 @@ package MythologyCollapse;
 		//	return to main menu if player chooses 2, else restart game Odysseus
 		public static void backToMenu() {
 			panel.addMessage("<html><br/>Αν θέλεις να ξαναπαίξεις την πίστα του Οδυσσέα και να αλλάξεις τις αποφάσεις σου, πάτησε 1.<br/>"
-					+ "Αλλιώς, αν θες να επιστρέψεις στο ΑΡΧΙΚΟ ΜΕΝΟΥ, πάτησε 2.<br/><html>");
+					+ "Αλλιώς, αν θες να τερματίσεις το παιχνίδι, πάτησε 2.<br/><html>");
 			//	take player's answer in the question
 			answer = Quiz.takeAnAnswer(2);
 			if(answer==1) {
 			initialization();
-			}
+			} 
 		}
 
 
