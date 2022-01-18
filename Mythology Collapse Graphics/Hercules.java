@@ -1,7 +1,7 @@
 package MythologyCollapse;
 
 public class Hercules {
-	private static int answer_given, answer;
+	private static int answer_given, answer, answer2, answer3;
 	private static int checkpoint = 1;
 	private static boolean k = true, father_zeus = true;
 	private static Graphics panel;
@@ -112,32 +112,32 @@ public class Hercules {
 			answer = q.takeAnAnswer(2);
 
 			if (answer == 1) {
-				panel.setMessage("<html> 1)Η Ήρα έστειλε φίδια για να σκοτώσουν τον Ηρακλή.<br>"
+				panel.addMessage("<html> 1)Η Ήρα έστειλε φίδια για να σκοτώσουν τον Ηρακλή.<br>"
 								+ "2)Η Ήρα πήγε η ίδια να σκοτώσει τον Ηρακλή. <html>");
-				answer = q.takeAnAnswer(2);
+				answer2 = q.takeAnAnswer(2);
 
-				if (answer == 1) {
-					panel.setMessage("<html>Η Ήρα η οποία ζήλευε θανάσιμα τον Δία για τις απιστίες του προκειμένου να τον εκδικηθεί <br>"
+				if (answer2 == 1) {
+					panel.addMessage("<html>Η Ήρα η οποία ζήλευε θανάσιμα τον Δία για τις απιστίες του προκειμένου να τον εκδικηθεί <br>"
 									+ "\nέστειλε στην κούνια του βρέφους Ηρακλή δύο φίδια, αλλά αυτός κατάφερε να τα στραγγαλίσει. <html>");
 
-				} else if (answer == 2) {
-					panel.setMessage("<html> 1)Η Ήρα απέτυχε και δεν σταμάτησε να αναζητεί τρόπο εκδίκησης. <br>"
+				} else if (answer2 == 2) {
+					panel.addMessage("<html> 1)Η Ήρα απέτυχε και δεν σταμάτησε να αναζητεί τρόπο εκδίκησης. <br>"
 									+ " 2)Η Ήρα πέτυχε τον στόχο της και ο Ηρακλής πέθανε. <html>");
-					answer = q.takeAnAnswer(2);
+					answer2 = q.takeAnAnswer(2);
 					
-					if (answer == 1) {
-						panel.setMessage("<html> Η Ήρα μετά από κάποια χρόνια κατάφερε να βρει τρόπο να σκοτώσει τον Ηρακλή, <br>"
+					if (answer2 == 1) {
+						panel.addMessage("<html> Η Ήρα μετά από κάποια χρόνια κατάφερε να βρει τρόπο να σκοτώσει τον Ηρακλή, <br>"
 										+ "παίρνοντας την μορφή ενός φίλου και πνίγοντάς τον στον ύπνο του <html>");
 
-					} else if (answer == 2) {
-						panel.setMessage("<html> Ο Ηρακλής πέθανε πολύ νωρίς στην Ιστορία.<html>");
+					} else if (answer2 == 2) {
+						panel.addMessage("<html> Ο Ηρακλής πέθανε πολύ νωρίς στην Ιστορία.<html>");
 						reset();
 					}
 				}
 			} 
 			
 			else if (answer == 2) {
-				panel.setMessage("<html> Δεν ζήλευε, οπότε ο Ηρακλής δεν έμαθε ποτέ τις πραγματικές του δυνάμεις. <html>");
+				panel.addMessage("<html> Δεν ζήλευε, οπότε ο Ηρακλής δεν έμαθε ποτέ τις πραγματικές του δυνάμεις. <html>");
 				ordinaryPerson();
 				answer = 1;
 			}
@@ -145,7 +145,7 @@ public class Hercules {
 		} else if (answer_given == 2) {
 			checkpoint--;
 			father_zeus = false;
-			panel.setMessage("<html>Ο θετός πατέρας του Ηρακλή, ο Αμφιτρύωνας, ανέλαβε να τον μεγαλώσει. Είχαν μια άριστη σχέση πατέρα και γιού, <br>"
+			panel.addMessage("<html>Ο θετός πατέρας του Ηρακλή, ο Αμφιτρύωνας, ανέλαβε να τον μεγαλώσει. Είχαν μια άριστη σχέση πατέρα και γιού, <br>"
 							+ "περνόντας αρκετό χρόνο μαζί και κάνοντας διάφορα πράγματα. <br>"
 							+ "Πήγαιναν για ψάρεμα και για κυνήγι και για τον Ηρακλή... <br>"
 							+ " Αμφιτρύωνας ήταν κάτι σαν το πρότυπό του. <html>");
@@ -164,7 +164,7 @@ public class Hercules {
 	private static void roadChoosing() {
 		assert checkpoint == 3 : "Wrong checkpoint";
 		checkpoint++;
-		panel.setMessage("<html> Ο μύθος που σώθηκε από τον Ξενοφώντα, μας διηγείται το περιστατικό εκείνο, όταν ο Ηρακλής καθισμένος σε κάποιο σταυροδρόμι, <br>"
+		panel.addMessage("<html> Ο μύθος που σώθηκε από τον Ξενοφώντα, μας διηγείται το περιστατικό εκείνο, όταν ο Ηρακλής καθισμένος σε κάποιο σταυροδρόμι, <br>"
 						+ "είδε να περνούν από μπροστά του δύο πανέμορφες κοπέλες. Η μια του έδειξε έναν εύκολο δρόμο, φαρδύ και ίσιο, που αν τον ακολουθούσε,<br>"
 						+ "θα χαιρόταν τη ζωή, αλλά θα έκανε ένα σωρό κακές πράξεις που θα τον καταδίκαζαν στην κρίση των ανθρώπων. Αυτή ήταν η Κακία.<br>"
 						+ "Η άλλη κόρη, η Αρετή, του έδειξε ένα δύσκολο δρόμο, γεμάτο κοφτερές πέτρες και αγκάθια, στενό και δύσβατο, που θα τον βάδιζε δύσκολα,<br>"
@@ -187,12 +187,12 @@ public class Hercules {
 			panel.addMessage("<html> Πως συνέχισε ο Ηρακλής την ζωή του; <br>"
 					+ "1)Άρχισε να αναπολεί το παρελθόν του και μετάνιωσε για ότι έκανε με παρακίνηση της Ήρας. <br>"
 					+ "2)Συνέχισε με την ανέμελη ζωή του. <html>");
-			answer = q.takeAnAnswer(2);
+			answer2 = q.takeAnAnswer(2);
 
-			if (answer == 1) {
+			if (answer2 == 1) {
 				panel.setMessage("<html> Προσπάθησε να βρει έναν τρόπο για να διορθώσει ότι είχε κάνει.<html>");
 
-			} else if (answer == 2) {
+			} else if (answer2 == 2) {
 				panel.setMessage("<html> Στα πλαίσια μιας φυσιολογικής και ανέμελης ζωής, έφτασε σε μεγάλη ηλικία πεθαίνοντας από φυσικά αίτια. <html>");
 				reset();
 
@@ -262,22 +262,22 @@ public class Hercules {
 			panel.setMessage("<html> Τι έκανε μετά; <br>" 
 							+ " 1)Σταμάτησε να τρέχει και ξανά σκέφτηκε τον τρόπο αντιμετώπισης. <br>"
 							+ " 2)Συνέχισε να τρέχει μέχρι που γύρισε τον Ευρυσθέα. <html>");
-			answer = q.takeAnAnswer(2);
+			answer2 = q.takeAnAnswer(2);
 
-			if (answer == 1) {
+			if (answer2 == 1) {
 				panel.addMessage("<html> Ο Ηρακλής προσπαθεί ξανά να βρει κάποιον τρόπο να εξοντώσει την Λερναία Ύδρα. <html>");
 			
-			} else if (answer == 2) {
+			} else if (answer2 == 2) {
 				panel.setMessage("<html> Ο Ευρυσθέας του υπενθύμισε γιατί κάνει τους άθλους του και πως έπρεπε να τα καταφέρει.<html>");
 				panel.addMessage("<html> Πως έπραξε ο Ηρακλής μετά από αυτήν την υπενθύμιση; <br>"
 								+ "\n 1)Γύρισε πίσω στην Λερναία Ύδρα για να την αντιμετωπίσει. <br>"
 								+ "\n 2)Αυτοκτόνησε από την θλίψη του. <html>");
-				answer = q.takeAnAnswer(2);
+				answer_given = q.takeAnAnswer(2);
 
-				if (answer == 1) {
+				if (answer_given == 1) {
 					panel.setMessage("<html> Η ιστορία με την Λερναία Ύδρα αρχίζει και πάλι <html>");
 
-				} else if (answer == 2) {
+				} else if (answer_given == 2) {
 					panel.setMessage("<html> Αυτοκτόνησε από την θλίψη και το άγχος του που δεν μπόρεσε να φέρει εις πέρας τους άθλους του. <html>");
 					reset();
 
@@ -314,14 +314,14 @@ public class Hercules {
 			panel.setMessage("<html> Τι αποτελέσματα είχε αυτό στους στάβλους και στην περιοχή; <br>"
 							+ " 1)Καταστράφηκαν οι στάβλοι εντελώς. <br>" 
 							+ " 2)Δεν επηρρεάστηκαν καθόλου. <html>");
-			answer = q.takeAnAnswer(2);
+			answer2 = q.takeAnAnswer(2);
 
-			if (answer == 1) {
+			if (answer2 == 1) {
 				panel.setMessage("<html> Έσπασαν οι φράχτες,τα ζώα το έσκασαν και κατέστερψαν την πόλη, με αποτέλεσμα <br>"
 						+ "οι κάτοικοι να ζητήσουν την ευθανασία του Ηρακλή ως εκδίκηση για τις περιουσίες τους που καταστράφηκαν. <html>");
 				reset();
 
-			} else if (answer == 2) {
+			} else if (answer2 == 2) {
 				panel.setMessage("<html> Δεν είχε κανένα αποτέλεσμα στους στάβλους και στην γύρω περιοχή. <br>"
 								+ "Ο Ηρακλής συνέχισε κανονικά τη ζωή του ως ένας συνηθισμένος άνθρωπος, <br>"
 								+ "καθώς δεν είχε την ψυχική δύναμη να συνεχίσει. <html>");
@@ -359,29 +359,29 @@ public class Hercules {
 			panel.setMessage("<html> Ποιό το αποτέλεσμα; <br>"
 							+ " 1)Πέτυχε και υπάκουε τις εντολές του Ηρακλή; <br>" 
 							+ " 2)Απέτυχε. <html>");
-			answer = q.takeAnAnswer(2);
+			answer2 = q.takeAnAnswer(2);
 
-			if (answer == 1) {
+			if (answer2 == 1) {
 				panel.setMessage("<html> 1)Πρόσταξε τον Ταύρο να παραδωθεί στον Ευρυσθέα.<br>"
 						+ " 2)Πρόσταξε το ταύρο να πάει να σκοτώσει τον Ευρυσθέα. <br>"
 						+ " 3)Πρόσταξε τον ταύρο να τον βοηθήσει να πάρει εκδίκηση από την Ήρα. <html>");
-				answer = q.takeAnAnswer(3);
+				answer3 = q.takeAnAnswer(3);
 
 				//panel.setMessage("Συνειδητοποίησε ότι παρά την δυσκολία των άθλων,\n"
 					//	+ "πρέπει να συνεχίσει ώστε να φτάσει στη λύτρωση.");
-				if (answer == 1) {
+				if (answer_given == 1) {
 					panel.setMessage("<html> Ο μινώταυρος μετά από αρκετή επιμονή τον υπάκουσε <html>");
 					
-				} else if (answer == 2) {
+				} else if (answer3 == 2) {
 					panel.setMessage("<html> Συνειδητοποίησε ότι παρά την δυσκολία των άθλων, πρέπει να συνεχίσει ώστε να φτάσει στη λύτρωση <br>"
 									+ "και όχι να σκοτώσει τον Ευρυσθέα. <html>");
 					reset();
 
-				} else if (answer == 3) {
+				} else if (answer3 == 3) {
 					answer = 1;
 				}
 
-			} else if (answer == 2){
+			} else if (answer2 == 2){
 				panel.setMessage("<html> Την ώρα που προσπαθούσε να τον δαμάσει,ο μινώταυρος τον χτύπησε με δύναμε και τον σκότωσε. <html>");
 				reset();
 			
@@ -404,11 +404,11 @@ public class Hercules {
 		panel.addMessage("<html> Τι έκανε εφόσον απέκτησε τη ζώνη; <br>" 
 						+ " 1)Tην παρέδωσε στην κόρη του Ευρυσθέα. <br>"
 						+ " 2)Την πήγε στον Άρη ζητώντας του ως αντάλλαγμα βοήθεια για να εκδικηθεί την Ήρα για το χαμό της οικογένειάς του. <html>");
-		answer = q.takeAnAnswer(2);
+		answer = Quiz.takeAnAnswer(2);
 		
 		if (answer == 1) {
-			panel.setMessage("<html> Έπειτα συνέχισε με τους υπόλοιπους άθλους του <html>");
-
+			panel.setMessage("<html> Έπειτα συνέχισε με τους υπόλοιπους άθλους του. <html>");
+			dwarfBrothers();
 		} else if (answer == 2) {
 			panel.setMessage("<html> Η Ήρα του είχε προκαλέσει πολλά δεινά στη ζωή του και σε αυτόν τον άθλο μεταμορφώθηκε σε αμαζόνα και ξεσήκωσε τις υπόλοιπες. <br>"
 					   		+"Έτσι ξύπνησε το μίσος του για εκείνη και γι'αυτό ζήτησε τον θάνατο της από τον Άρη.<html>");
@@ -435,17 +435,17 @@ public class Hercules {
 
 		if (answer == 1) {
 			panel.setMessage("<html> Έτσι ο Ηρακλής εκπλήρωσε και αυτόν τον άθλο του <html>");
-
+			 wifeBetrayal();
 		} else if (answer == 2) {
 			panel.setMessage("<html> Έπειτα τι έγινε; <br>"
 							+ "1)Tα σκοινιά ήταν πολύ μικρά και ο Ηρακλής κατάφερε να σπάσει τα δεσμά του. <br>"
 					 		+"2)Ο Ηρακλής δεν κατάφερε να ελευθερωθεί. <html>");
-			answer = q.takeAnAnswer(2);
+			answer2 = q.takeAnAnswer(2);
 			
-			if (answer == 1) {
+			if (answer2 == 1) {
 				panel.setMessage("<html> Έτσι ο Ηρακλής τους παγίδευσε στη λεοντή του και τους πήγε στον Ευρυσθέα. <html>");
-
-			} else if (answer == 2) {
+				reset();
+			} else if (answer2 == 2) {
 				panel.setMessage("<html> Οι Πυγμαίοι πήραν την εκδίκηση τους. <html>");
 				reset();
 			
@@ -476,22 +476,22 @@ public class Hercules {
 
 		if (answer == 1) {
 			//Τίτλοι τέλους
-			panel.setMessage("<html> Ο Φιλοκτήτης τότε τον λυπήθηκε και άναψε τη φωτιά πάνω στην κορυφή του βουνού Οίτη και ο Ηρακλής κάηκε ζωντανός. <br>"
+			panel.addMessage("<html> Ο Φιλοκτήτης τότε τον λυπήθηκε και άναψε τη φωτιά πάνω στην κορυφή του βουνού Οίτη και ο Ηρακλής κάηκε ζωντανός. <br>"
 					   			+"Ακόμη και σήμερα, η υψηλότερη κορυφή αυτού του βουνού ονομάζεται Πυρά. <html>");
 			
 		} else if (answer == 2) {
-			panel.setMessage("<html> Πως έπραξε μετά λοιπόν ο ήρωας; <br>"
+			panel.addMessage("<html> Πως έπραξε μετά λοιπόν ο ήρωας; <br>"
 							+ " 1)Ο Ηρακλής δεν φόρεσε τον χιτώνα και παράτησε τη γυναίκα του. <br>"
 							+ " 2)Ο Ηρακλής από αντίδραση, φόρεσε τον χιτώνα στη γυναίκα του. <html>");
-			answer = q.takeAnAnswer(2);
+			answer2 = q.takeAnAnswer(2);
 			
-			if (answer == 1){
+			if (answer2 == 1){
 				//Τίτλοι τέλους
-				panel.setMessage("<html> Έζησε μια ζωή ελεύθερος και μόνος του, περνόντας τον χρόνο του καθημερινά με κυνήγι και ψάρεμα.<html>");
+				panel.addMessage("<html> Έζησε μια ζωή ελεύθερος και μόνος του, περνόντας τον χρόνο του καθημερινά με κυνήγι και ψάρεμα.<html>");
 			
-			} else if (answer == 2){
+			} else if (answer2 == 2){
 				//Τίτλοι τέλους
-				panel.setMessage("<html> Καθώς νόμιζε πως η γυναίκα του ήθελε να τον βλάψει απόφασισε να το κάνει πρώτος εκείνος.  <br>"
+				panel.addMessage("<html> Καθώς νόμιζε πως η γυναίκα του ήθελε να τον βλάψει απόφασισε να το κάνει πρώτος εκείνος.  <br>"
 								+ "Είδε την γυναίκα του να πεθαίνει σιγά σιγά από τους πόνους <html>");
 			
 			}
@@ -508,7 +508,7 @@ public class Hercules {
 	private static void ordinaryPerson() {
 		checkpoint--;
 		if (father_zeus) {
-			panel.setMessage("<html> Ο Ηρακλής έπειτα εκπαιδεύτηκε για να μάθει νέες τέχνες. <html>");
+			panel.addMessage("<html> Ο Ηρακλής έπειτα εκπαιδεύτηκε για να μάθει νέες τέχνες. <html>");
 		}
 		teachers();
 		moreJobs();
@@ -548,7 +548,7 @@ public class Hercules {
 				+ " 2)Επιστήμη. <br>"
 				+ " 3)Μουσική. <html>");
 		answer = q.takeAnAnswer(3);
-		panel.setMessage("<html> Ο Ηρακλής έπειτα συνδίασε όλες τις ικανότητές του και τις γνώσεις του, αλλά κάτι του έλλειπε. <html>");
+		panel.setMessage("<html> Ο Ηρακλής έπειτα συνδύασε όλες τις ικανότητές του και τις γνώσεις του, αλλά κάτι του έλλειπε. <html>");
 	}
 	
 	private static int sthingMissing() {
@@ -565,8 +565,8 @@ public class Hercules {
 			panel.addMessage("<html> Κατάφερε να βγάλει χρήματα στο ταξίδι του;  <br>"
 							+ " 1)Ναι. <br>"
 							+ " 2)Όχι. <html>");
-			answer = q.takeAnAnswer(2);
-			if (answer == 1) {
+			answer2 = q.takeAnAnswer(2);
+			if (answer2 == 1) {
 				panel.setMessage("<html> Ο Ηρακλής αφού έβγαλε χρήματα πήρε την απόφαση να φτιάξει την δική του οικογένεια. <html>");
 				return answer;
 			} else {
@@ -577,7 +577,7 @@ public class Hercules {
 	}
 	
 	private static void oikogeneiarxhs() {
-		panel.setMessage("<html> Ο Ηρακλής πόσα παιδιά έκανε; <br>"
+		panel.addMessage("<html> Ο Ηρακλής πόσα παιδιά έκανε; <br>"
 						+ " 1)1 κόρη <br>"
 						+ " 2)2 γιους. <html>");
 		answer = q.takeAnAnswer(2);
@@ -585,7 +585,7 @@ public class Hercules {
 	}
 	
 	private static void relationKids() {
-		panel.setMessage("<html> Ο Ηρακλής με όλες τις κακουχίες που είχε περάσει προσπαθούσε πάνω από όλα να είναι καλός πατέρας.<br>"
+		panel.addMessage("<html> Ο Ηρακλής με όλες τις κακουχίες που είχε περάσει προσπαθούσε πάνω από όλα να είναι καλός πατέρας.<br>"
 						+ "Πώς πιστεύεται ότι ήταν η σχέση μεταξύ του Ηρακλή και τα παιδιά του; <br>"
 						+ " 1)Αγαπημένη και ομαλή. <br>"
 						+ " 2)Πάντα εκδικητική και ανταγωνιστική. <html>");
