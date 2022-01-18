@@ -11,6 +11,7 @@ public class Perseas  {
 	Graphics panel;
 	public Perseas(Graphics panel)  {  //constructor of the Perseas class
 		this.panel=panel;
+		panel.setImage("/resources/medusa.png");
 		q=new Quiz(panel);  //initialize graphics
 		initiateStory();   //Method that initiates the story
 	}
