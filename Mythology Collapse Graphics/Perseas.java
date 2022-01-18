@@ -481,6 +481,9 @@ public class Perseas  {
 		panel.addMessage("<html> Εχασες το παιχνίδι, πάτα 1 αν θες να σταματήσεις να παίζεις <br>"
 				+ "ή 2 αν θες να ξεκινήσεις από την αρχή ή 3 αν θες να πας στο τελευταίο checkpoint <br> <html>");
 		Scanner in=new Scanner(System.in);
+		if(choice==1){
+			System.exit();
+		}
 		int choice=q.takeAnAnswer(3);
 		if(choice==2) {
 			initiateStory();
