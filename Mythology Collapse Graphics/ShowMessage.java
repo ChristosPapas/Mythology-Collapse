@@ -27,15 +27,17 @@ import javax.swing.JPanel;
 import javax.swing.JInternalFrame;
 import javax.swing.JTextField;
 
+
 public class ShowMessage extends Canvas {
 	JButton Continue;
-
+	private int option;
 	private JFrame frmMythologyCollapse;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void runShow() {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -47,18 +49,28 @@ public class ShowMessage extends Canvas {
 			}
 		});
 	}
-
+	int getOption() {
+		while(option == 0){
+		    try {
+		       Thread.sleep(100);
+		   } catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		}
+		return option;
+	}
 	/**
 	 * Create the application.
 	 */
 	public ShowMessage() {
 		initialize();
+		frmMythologyCollapse.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		frmMythologyCollapse = new JFrame();
 		frmMythologyCollapse.getContentPane().setBackground(Color.WHITE);
 		JLabel WelcomeLabel = new JLabel("Welcome To Mythology Collapse");
@@ -74,7 +86,6 @@ public class ShowMessage extends Canvas {
 		frmMythologyCollapse.setTitle("Mythology Collapse");
 		frmMythologyCollapse.setIconImage(Toolkit.getDefaultToolkit().getImage(ShowMessage.class.getResource("/resources/IconNoBackGround.png")));
 		frmMythologyCollapse.setBounds(100, 100, 452, 404);
-		frmMythologyCollapse.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMythologyCollapse.setLocationRelativeTo(null);
 		
 
@@ -100,13 +111,13 @@ public class ShowMessage extends Canvas {
 				JLabel Instructions=new JLabel();
 				Instructions.setLocation(250, -170); 
 				Instructions.setSize(500, 1000);
-				Instructions.setText("<html>Καλησπέρα παίχτη καλως όρισες στο Mythology Collapse.<br/>"
-										+ "Το Mythology Collapse είναι ένα παιχνίδι επιλογών. <br/>"
-										+ "Επιλέγεις έναν παίχτη και καλείσαι λάβεις κάποιες <br/>"
-										+ "αποφάσεις με βάση τα δεδομένα που σου δίνει το παιχνίδι <br/>"
-										+ "Οι αποφάσεις θα καθορίσουν το τέλος του παιχνιδιού <br/>"
-										+ "υπάρχουν δηλαδή πολλές απολήξεις στην Ιστορία <br/>"
-										+ "Πάτα το κουμπί συνέχισε για να επιλέξεις έναν παίκτη  <html>");
+				Instructions.setText("<html>ΞΞ±Ξ»Ξ·ΟƒΟ€Ξ­ΟΞ± Ο€Ξ±Ξ―Ο‡Ο„Ξ· ΞΊΞ±Ξ»Ο‰Ο‚ ΟΟΞΉΟƒΞµΟ‚ ΟƒΟ„ΞΏ Mythology Collapse.<br/>"
+										+ "Ξ¤ΞΏ Mythology Collapse ΞµΞ―Ξ½Ξ±ΞΉ Ξ­Ξ½Ξ± Ο€Ξ±ΞΉΟ‡Ξ½Ξ―Ξ΄ΞΉ ΞµΟ€ΞΉΞ»ΞΏΞ³ΟΞ½. <br/>"
+										+ "Ξ•Ο€ΞΉΞ»Ξ­Ξ³ΞµΞΉΟ‚ Ξ­Ξ½Ξ±Ξ½ Ο€Ξ±Ξ―Ο‡Ο„Ξ· ΞΊΞ±ΞΉ ΞΊΞ±Ξ»ΞµΞ―ΟƒΞ±ΞΉ Ξ»Ξ¬Ξ²ΞµΞΉΟ‚ ΞΊΞ¬Ο€ΞΏΞΉΞµΟ‚ <br/>"
+										+ "Ξ±Ο€ΞΏΟ†Ξ¬ΟƒΞµΞΉΟ‚ ΞΌΞµ Ξ²Ξ¬ΟƒΞ· Ο„Ξ± Ξ΄ΞµΞ΄ΞΏΞΌΞ­Ξ½Ξ± Ο€ΞΏΟ… ΟƒΞΏΟ… Ξ΄Ξ―Ξ½ΞµΞΉ Ο„ΞΏ Ο€Ξ±ΞΉΟ‡Ξ½Ξ―Ξ΄ΞΉ <br/>"
+										+ "ΞΞΉ Ξ±Ο€ΞΏΟ†Ξ¬ΟƒΞµΞΉΟ‚ ΞΈΞ± ΞΊΞ±ΞΈΞΏΟΞ―ΟƒΞΏΟ…Ξ½ Ο„ΞΏ Ο„Ξ­Ξ»ΞΏΟ‚ Ο„ΞΏΟ… Ο€Ξ±ΞΉΟ‡Ξ½ΞΉΞ΄ΞΉΞΏΟ <br/>"
+										+ "Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…Ξ½ Ξ΄Ξ·Ξ»Ξ±Ξ΄Ξ® Ο€ΞΏΞ»Ξ»Ξ­Ο‚ Ξ±Ο€ΞΏΞ»Ξ®ΞΎΞµΞΉΟ‚ ΟƒΟ„Ξ·Ξ½ Ξ™ΟƒΟ„ΞΏΟΞ―Ξ± <br/>"
+										+ "Ξ Ξ¬Ο„Ξ± Ο„ΞΏ ΞΊΞΏΟ…ΞΌΟ€Ξ― ΟƒΟ…Ξ½Ξ­Ο‡ΞΉΟƒΞµ Ξ³ΞΉΞ± Ξ½Ξ± ΞµΟ€ΞΉΞ»Ξ­ΞΎΞµΞΉΟ‚ Ξ­Ξ½Ξ±Ξ½ Ο€Ξ±Ξ―ΞΊΟ„Ξ·  <html>");
 				Instructions.setForeground(Color.WHITE);
 				frmMythologyCollapse.getContentPane().add(InstructionPanel);
 				InstructionPanel.add(label);
@@ -116,17 +127,17 @@ public class ShowMessage extends Canvas {
 				Instructions.setVisible(true);
 				Continue=new JButton("Continue");
 				Continue.setSize(100, 20);
-				Continue.setLocation(350,500);
+				Continue.setLocation(400, 500);
 				label.add(Continue);
 				Continue.setVisible(true);
 				Continue.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Continue.setVisible(false);
-						Instructions.setText("Επέλεξε έναν ήρωα");
+						Instructions.setText("Ξ•Ο€Ξ­Ξ»ΞµΞΎΞµ Ξ­Ξ½Ξ±Ξ½ Ξ®ΟΟ‰Ξ±");
 						Instructions.setLocation(400, -170);
-						JButton Perseas = new JButton("Περσέας");
-						JButton Odysseus = new JButton("Οδυσσέας");
-						JButton Hercules = new JButton("Ηρακλής");
+						JButton Perseas = new JButton("Ξ ΞµΟΟƒΞ­Ξ±Ο‚");
+						JButton Odysseus = new JButton("ΞΞ΄Ο…ΟƒΟƒΞ­Ξ±Ο‚");
+						JButton Hercules = new JButton("Ξ—ΟΞ±ΞΊΞ»Ξ®Ο‚");
 						Perseas.setSize(100, 20);
 						Odysseus.setSize(100, 20);
 						Hercules.setSize(100, 20);
@@ -141,51 +152,32 @@ public class ShowMessage extends Canvas {
 							
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								frmMythologyCollapse.dispatchEvent(new WindowEvent(frmMythologyCollapse, WindowEvent.WINDOW_CLOSING));
-								 Graphics panel = new Graphics();
-								try {
-									Perseas story = new Perseas(panel);
-							} catch (InterruptedException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
-								
+								option=1;	
+								frmMythologyCollapse.dispatchEvent(new WindowEvent(frmMythologyCollapse, WindowEvent.WINDOW_CLOSING));																								
 							}
 						}); 
 						Odysseus.addActionListener(new ActionListener() {
-							
+						
 							
 							@Override
 							public void actionPerformed(ActionEvent e) {
+								option=2;
 								frmMythologyCollapse.dispatchEvent(new WindowEvent(frmMythologyCollapse, WindowEvent.WINDOW_CLOSING));
-								Graphics panel = new Graphics();
-								try {
-									Odysseus story = new Odysseus(panel);
-								} catch (InterruptedException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
-								
 							}
 						});
 						Hercules.addActionListener(new ActionListener() {
 							
 							@Override
 							public void actionPerformed(ActionEvent e) {
+								option=3;
 								frmMythologyCollapse.dispatchEvent(new WindowEvent(frmMythologyCollapse, WindowEvent.WINDOW_CLOSING));
-								Graphics panel = new Graphics();
-								try {
-									Hercules story = new Hercules(panel);
-								} catch (InterruptedException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
-								
 							}
-						});
+							
+						}); 
 					}
-		        });
+		        }); 
 			}
 		});
 	}
 }
+
