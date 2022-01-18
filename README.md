@@ -8,6 +8,6 @@ In order to compile and play the game you should excecute the command javac Main
 If you want to compile the GUI version of the Game you should run the command javac Game
 
 in the final release you can also find two excecutables one for the command line version and one for the 
-GUI version
+GUI version java Mythology Collapse GUI Excecutable
 
-In order to run the command line version type java 
+
