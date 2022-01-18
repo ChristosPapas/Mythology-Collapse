@@ -1,3 +1,5 @@
+package MythologyCollapse;
+
 public class Game {
 	public static void main (String [] args) {
 		ShowMessage test=new ShowMessage();
