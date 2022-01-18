@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.datatransfer.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.awt.*;
 import java.io.*;
@@ -29,7 +30,8 @@ public class Graphics extends Thread implements ActionListener {
 		f = new JFrame("Mythology Collapse");  // creating instance of JFrame with message a on the upper left corner of the Window
 		f.setResizable(false);
 		message = new JLabel("", SwingConstants.CENTER);//creating label with message  
-		message.setBounds(30,30,900,400);		//x axis, y axis, width, height  
+		message.setBounds(30,30,900,400);	//x axis, y axis, width, height  
+		message.setForeground(Color.WHITE);
 		warningMessage = new JLabel("");
 		warningMessage.setBounds(100, 230, 800, 30);
 		f.add(message);		//adding message in JFrame  
@@ -90,6 +92,10 @@ public class Graphics extends Thread implements ActionListener {
 		lab.setSize(1000,600);
 		f.add(lab);
 		f.setVisible(true);	
+	}
+	public void closeFrame() {
+		f.dispatchEvent(
+				new WindowEvent(f, WindowEvent.WINDOW_CLOSING));
 	}
 }
 
