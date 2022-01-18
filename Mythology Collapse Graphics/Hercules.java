@@ -1,3 +1,5 @@
+package MythologyCollapse;
+
 public class Hercules {
 	private static int answer_given, answer;
 	private static int checkpoint = 1;
@@ -11,7 +13,7 @@ public class Hercules {
  *****************************************************/
 	public Hercules(Graphics panel) {
 		this.panel=panel;
-		panel.setImage("/resources/lion.png");
+		panel.setImage("/resources/lion.jpg");
 		q=new Quiz(panel);
 		panel.setMessage("<html> Το ακόλουθο παιχνίδι θα βασιστεί πάνω σε ερωτήσεις σχετικά με τη ζωή του ήρωα και τους άθλους που διέπραξε.<br> <html>");
 		panel.addMessage("<html> Ο Ηρακλής ήταν αρχαίος μυθικός ήρωας, θεωρούμενος ως ο μέγιστος των Ελλήνων ηρώων.<br>"
