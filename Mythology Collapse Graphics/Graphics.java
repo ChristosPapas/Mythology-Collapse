@@ -1,5 +1,6 @@
 package MythologyCollapse;
 
+
 import java.awt.Color;
 import java.awt.datatransfer.*;
 import java.awt.event.ActionEvent;
@@ -98,4 +99,3 @@ public class Graphics extends Thread implements ActionListener {
 				new WindowEvent(f, WindowEvent.WINDOW_CLOSING));
 	}
 }
-
