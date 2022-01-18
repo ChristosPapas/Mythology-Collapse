@@ -1,3 +1,5 @@
+package MythologyCollapse;
+
 import java.awt.EventQueue;
 import java.awt.Image;
 
